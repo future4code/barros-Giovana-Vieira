@@ -105,20 +105,21 @@ function retornaUltimoElemento(array) {
 }
 
 // EXERCÍCIO 11
-function trocaPrimeiroEUltimo(array) {
-  // implemente sua lógica aqui
+function trocaPrimeiroEUltimo(array , from , to) {
+  array.splice(to , 0 , array.splice(from , 1)[0])
+  return array
+ // implemente sua lógica aqui
 }
 
 // EXERCÍCIO 12
 function checaIgualdadeDesconsiderandoCase(string1, string2) {
+  return string1.toUpperCase() === string2.toUpperCase()
   // implemente sua lógica aqui
-
 }
 
 // EXERCÍCIO 13
 function checaRenovacaoRG() {
-  // implemente sua lógica aqui
-
+    // implemente sua lógica aqui
 }
 
 // EXERCÍCIO 14
