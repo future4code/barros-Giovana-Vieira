@@ -8,8 +8,6 @@ function retornaTamanhoArray(array) {
     return array.length   
 }
 
-//Escreva uma função que recebe um array como parâmetro e retorne este array invertido
-
 // EXERCÍCIO 02
 function retornaArrayInvertido(array) {
     let arrayInvertido = []
@@ -64,7 +62,6 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
   return objeto
 }
 
-
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
   let primeirosPares = []
@@ -74,8 +71,6 @@ function retornaNPrimeirosPares(n) {
   }
   return primeirosPares
 }
-
-
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
@@ -91,8 +86,6 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
     return "Escaleno"
   }
 }
-
-// Escreva uma função que receba um array de números e retorne um novo array com apenas 2 valores (NESTA ORDEM): o segundo maior e o segundo menor número do array original.
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
@@ -137,8 +130,29 @@ function retornaPessoasNaoAutorizadas(pessoas) {
   return pessoasNaoAutorizadas
 }
 
+
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
+
+  for(let objetos of contas){
+ 
+  let calculo = contas.filter((objeto , indice , array)=>{
+
+    let somaCompras = array[indice].compras.reduce((acumulador , numero)=> acumulador + numero, 0)
+
+    let saldoAtualizado = array[indice].saldoTotal - somaCompras
+
+    let novoArray = objeto.saldoTotal = saldoAtualizado
+    
+    array[indice].compras = []
+
+    return novoArray
+
+  })
+  
+  }  
+
+  return contas
 
 }
 
@@ -152,9 +166,5 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-    new Date(consultas.data)
-   let ordenadoPorData = (a , b) =>{
-    return a.data > b.data
-   }
-   return consultas.sort(ordenadoPorData)
+
 }
