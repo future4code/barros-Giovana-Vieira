@@ -10,7 +10,11 @@ function retornaTamanhoArray(array) {
 
 // EXERCÍCIO 02
 function retornaArrayInvertido(array) {
-    return array.reverse()
+    let arrayInvertido = []
+    for(let indice = 0 ; indice < array.length ; indice++){
+        arrayInvertido.unshift(array[indice])
+    }
+    return arrayInvertido
 }
 
 // EXERCÍCIO 03
@@ -20,12 +24,13 @@ function retornaArrayOrdenado(array) {
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
-  let arrayPares = array.filter((item)=>{
-    if(item % 2 == 0){
-      return array
+  novoArrayPares = []
+  for(let numeros of array){
+    if((numeros % 2) == 0){
+      novoArrayPares.push(numeros)
     }
-  })
-  return arrayPares
+  }
+  return novoArrayPares
 }
 
 // EXERCÍCIO 05
@@ -59,7 +64,12 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-
+  let primeirosPares = []
+  for(num = 0 ; primeirosPares.length < n ; num++)
+  if(num % 2 == 0){
+    primeirosPares.push(num)
+  }
+  return primeirosPares
 }
 
 // EXERCÍCIO 09
@@ -79,7 +89,13 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-  
+  let arraySegundoMaiorESegundoMenor = []
+  let arrayOrdenado = array.sort((a , b) => a -b)
+  let segundoNumeroMaior = arrayOrdenado[arrayOrdenado.length-2]
+  let segundoNumeroMenor = arrayOrdenado[1]
+  arraySegundoMaiorESegundoMenor.push(segundoNumeroMaior)
+  arraySegundoMaiorESegundoMenor.push(segundoNumeroMenor)
+  return arraySegundoMaiorESegundoMenor
 }
 
 // EXERCÍCIO 11
@@ -89,30 +105,66 @@ function retornaChamadaDeFilme(filme) {
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+   let anonimo = {
+     ...pessoa
+   }
+   anonimo.nome= "ANÔNIMO"
+   return anonimo
 }
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   
+   let pessoasAutorizadas = pessoas.filter((pessoas)=>{
+     if ((pessoas.idade > 14) && (pessoas.idade < 60) && (pessoas.altura >= 1.5))
+     return pessoas
+   })
+   return pessoasAutorizadas    
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+  let pessoasNaoAutorizadas = pessoas.filter((pessoas)=>{
+    if ((pessoas.idade <= 14) || (pessoas.idade > 60) || (pessoas.altura < 1.5))
+    return pessoas
+  })
+  return pessoasNaoAutorizadas
 }
+
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
+
+  for(let objetos of contas){
+ 
+  let calculo = contas.filter((objeto , indice , array)=>{
+
+    let somaCompras = array[indice].compras.reduce((acumulador , numero)=> acumulador + numero, 0)
+
+    let saldoAtualizado = array[indice].saldoTotal - somaCompras
+
+    let novoArray = objeto.saldoTotal = saldoAtualizado
+    
+    array[indice].compras = []
+
+    return novoArray
+
+  })
+  
+  }  
+
+  return contas
 
 }
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+  let ordenadoAlfabeticamente = consultas.sort((a , b) => {
+    return a.nome.localeCompare(b.nome)
+  })
+  return ordenadoAlfabeticamente
 }
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
+
 }
