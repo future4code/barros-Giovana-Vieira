@@ -1,0 +1,100 @@
+body {
+    margin: 0%;
+}
+
+header {
+    text-align: center;
+    margin: 0px;
+    padding: 10px;
+    color: black;
+    font-family: 'Consolas','Candara','Bahnschrift Light';
+    
+}
+
+.img-redonda {
+    width: 180px;
+    height: 180px;
+    border-radius: 800px;    
+    margin: 5px;
+    display: inline;
+      
+}
+
+.caixa-sobre-mim {
+    background-color: #288b62e3;
+    display: block;
+    padding: 20px;
+    margin: 10px 500px 10px 500px;
+    color: white; 
+    text-align: center;
+    font-family: 'Consolas','Candara','Bahnschrift Light';
+    
+}
+
+.caixa-habilidades {
+    background-color: #288b62e3;
+    display: block;
+    padding: 20px;
+    margin: 10px 600px 10px 600px;
+    color: white; 
+    text-align: center;
+    font-family: 'Consolas','Candara','Bahnschrift Light';
+    
+}
+
+.caixa-experiencias {
+    background-color: #288b62e3;
+    display: block;
+    padding: 20px;
+    margin: 10px 700px 10px 700px;
+    color: white; 
+    text-align: center;
+    font-family: 'Consolas','Candara','Bahnschrift Light';
+    
+}
+
+.links {
+    font-size: 21px;
+    padding: 5px;
+    margin: 5px;
+    text-decoration: none;
+    color: #1e7551;
+    font-family: 'Consolas','Candara','Bahnschrift Light';
+}
+
+.links:hover {
+    text-decoration: underline;
+    color: #52a584;
+}
+
+.fale-comigo {
+    padding: 10px; 
+    color: white; 
+    background-color: #1e7551;
+    font-size: 21px;
+    text-decoration: none;
+    
+}
+
+.fale-comigo:hover {
+    background-color: #52a584;
+}
+
+.logo {
+    padding: 20px 0px 0px 200px;
+    width: 60px;
+    height: 60px;
+}
+
+.navegador {
+    margin: 0px 200px 10px 0px;
+    text-align: right;
+    
+}
+
+#hello-world {
+    width: 500px;
+    height: 100px;
+    margin: 70px 0px 0px 10px;
+}
+
