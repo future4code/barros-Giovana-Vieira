@@ -1,0 +1,82 @@
+.ajuste {
+    text-align: center;
+    
+}
+
+.tamanho-imagem {
+    width: 350px;
+    height: 350px;
+}
+
+h1 {
+    color: seagreen;
+    margin: 0px 0px 15px 0px;
+    padding: 20px;
+    background-color: whitesmoke;
+    font-size: 50px;
+
+}
+
+h2 {
+    font-size: 30px;
+    padding: 10px;
+}
+
+p {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+td {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 120px;
+}
+
+tr {
+    font-size: 20px;
+}
+
+nav {
+    font-size: 23px;
+    padding: 10px;
+}
+
+a {
+    padding: 5px;
+}
+
+header {
+    background-color: whitesmoke;
+    padding: 15px;
+    margin: 0px 0px 5px 0px;
+}
+
+footer {
+    background-color: whitesmoke;
+    padding: 15px;
+    margin: 10px 0px 0px 0px;
+}
+
+
+
+label {
+    font-size: 20px;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+main {
+    background-color: white;
+}
+
+.margem {
+    margin: 0px;
+}
+
+.mesma-linha {
+    display: inline;
+}
+
