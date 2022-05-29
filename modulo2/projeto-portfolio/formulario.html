@@ -10,10 +10,6 @@
 </head>
 <body>
 
-    <nav>
-        <a href="index.html"><img class="logo" src="img/GV.png" alt="Logo"></a>
-    </nav>
-    
     <nav class="navegador">
         <a class="links" href="index.html">Página Inicial</a>
         <a class="links" href="sobre-mim.html">Sobre</a> 
@@ -21,12 +17,32 @@
         <a class="links" href="projetos.html">Projetos</a>
         <a class="fale-comigo" href="formulario.html">Fale comigo</a>
     </nav> <br>
-    
-    
-   
-    <footer>
 
-    </footer>
+    <h1 class="h1" >FALE COMIGO</h1>
     
+        <form id="formulario" action="#">
+
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome"> <br> <br>
+
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email"> <br> <br>
+
+            <textarea name="contato" id="contato" cols="30" rows="10" maxlength="2000" minlength="1"></textarea>
+
+            <button type="submit">Enviar</button>
+
+        </form> <br> <br>
+
+        <h1 class="h1" >REDES SOCIAIS</h1>
+
+        <div id="redes-sociais"> 
+
+            <a href="https://www.linkedin.com/in/gioivieira/" target="_blank"><img id="img-redes-sociais" src="img/linkedin.png" alt="Linkedin"></a>
+            <a href="https://github.com/future4code/barros-Giovana-Vieira" target="_blank"><img id="img-redes-sociais" src="img/git.png" alt="GitHub"></a>
+            <a href="mailto:gioivieira@gmail.com? subject= subject text" target="_blank"><img id="img-redes-sociais" src="img/e-mail.png" alt="E-mail"></a>          
+            
+        </div>
+
 </body>
 </html>
