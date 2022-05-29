@@ -157,12 +157,12 @@ header {
 .caixa-projetos {
     background-color: #288b62e3;
     display: block;
-    padding: 20px;
+    padding: 5px 20px 5px 20px;
     margin: 10px 300px 0px 300px;
     color: white; 
     text-align: center;
     font-family: 'Candara','Consolas','Bahnschrift Light';
     border-radius: 50px;
-    font-size: 18px;    
+    font-size: 18px;
 }
 
