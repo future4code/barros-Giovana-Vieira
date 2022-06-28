@@ -23,7 +23,19 @@ function Post(props){
   const [numeroComentarios, setNumeroComentarios] = useState(0)
 
   const onClickCurtida = () => {
-    console.log('Curtiu!')
+
+    setCurtido(!curtido)
+
+    if(!curtido) {
+      iconeCurtida = iconeCoracaoPreto
+      setnumeroCurtidas(numeroCurtidas + 1)
+      console.log('Curtiu!')
+    } else if(iconeCurtida = iconeCoracaoPreto) {
+      iconeCurtida = iconeCoracaoBranco
+      setnumeroCurtidas(numeroCurtidas - 1)
+      console.log('Descurtiu')
+    } 
+
   }
   
   const onClickComentario = () => {
@@ -39,7 +51,8 @@ function Post(props){
     setNumeroComentarios(numeroComentarios + 1)
   }
 
-  let iconeCurtida
+  
+    let iconeCurtida
 
     if(curtido) {
       iconeCurtida = iconeCoracaoPreto
@@ -66,7 +79,7 @@ function Post(props){
         <IconeComContador
           icone={iconeCurtida}
           onClickIcone={onClickCurtida}
-          valorContador={state.numeroCurtidas}
+          valorContador={numeroCurtidas}
         />
 
         <IconeComContador
