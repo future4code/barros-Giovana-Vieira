@@ -10,17 +10,16 @@ import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 
 
 function Post(props){
-  const [state, setState] = useState({
-    curtido: false,
-    numeroCurtidas: 0,
-    comentando: false,
-    numeroComentarios: 0
-  })
-
+  
   const [numeroCurtidas, setnumeroCurtidas] = useState (0)
   const [curtido, setCurtido] = useState(false)
   const [comentando, setComentando] = useState(false)
   const [numeroComentarios, setNumeroComentarios] = useState(0)
+  const [comentarioUsuario , setComentarioUsuario] = useState("")
+
+  const handleComentarioUsuario = (event) => {
+    setComentarioUsuario(event.target.value)
+  }
 
   const onClickCurtida = () => {
 
@@ -41,10 +40,10 @@ function Post(props){
   const onClickComentario = () => {
     setComentando(!comentando)
     if(comentando) {
-      componenteComentario = <SecaoComentario aoEnviar={aoEnviarComentario}/>
+      componenteComentario = <SecaoComentario aoEnviar={aoEnviarComentario} comentario={comentarioUsuario} onChangeComentario={handleComentarioUsuario} />
     }
     console.log(comentando)
-  }
+  } 
   
   const aoEnviarComentario = () => {
     setComentando(false)
