@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
-
-
 export const HeaderStyle = styled.header`
 
     display: flex;
     justify-content: center;
     font-size: 1vw;
-    padding: 0;
+    padding: 0.5vw;
 
     div {
         display: flex;
@@ -31,28 +29,40 @@ export const LateralUm = styled.div`
 
 export const Meio = styled.div`
     display: flex;   
-    width: 100%;
+    width: 80vw;
     white-space: nowrap;
+    padding: 0.5vw;
       
     section {
-
         display: flex;
         padding: 40vw 30vw 0 0;
-        margin: 0 0 1vw 1vw;
+        width: 50vw;
+        margin-left: 0.2vw;
+        margin-bottom: 0.3vw;
 
         div{
         display: flex;
         margin: 0 0.4vw;        
 
         label {
-            margin: 0 0.5vw;            
+            margin: 0 0.4vw;         
         }
+
+        input {
+            width: 100%;
+        }
+
         div {
             input {
                 width: 20vw;
             }
         }
         }
+
+        button {
+            padding: 0 0.2vw;
+        }
+
     }
 `
 
@@ -65,15 +75,12 @@ export const LateralDois = styled.div`
 export const FooterStyle = styled.footer`
     background-color: DarkGrey;
     margin: 0px;
-    position: fixed;
     width: 100%;
     padding: 0.1vw;
     text-align: center;
 
     p{
-            padding: 0;
-            margin: 0;
-            font-size: 0.8vw;
+        font-size: 0.8vw;
     }
 `
 

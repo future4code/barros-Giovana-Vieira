@@ -19,7 +19,7 @@ const ConteudoPrincipal = () => {
                         <div><input></input></div>
                     </div>
 
-                    <button>Enviar mensagem</button>
+                    <button>Enviar Mensagem</button>
 
                 </section>                
             </Meio>
