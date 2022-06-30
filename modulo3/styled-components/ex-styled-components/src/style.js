@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 
+
 export const HeaderStyle = styled.header`
 
     display: flex;
     justify-content: center;
-    
+    font-size: 1vw;
+    padding: 0;
 
     div {
         display: flex;
@@ -13,16 +15,13 @@ export const HeaderStyle = styled.header`
     }
 
     img {
-        width: 2.5vw;
-        margin: 1vw 0.5vw;
+        width: 2.3vw;
+        margin-right: 0.2vw;
     }
 `
 
 export const CentroDaPagina = styled.main`
-
-    display: flex;
-    justify-content: space-between;
-
+    display: flex;   
 `
 export const LateralUm = styled.div`
     background-color: orange;
@@ -31,19 +30,29 @@ export const LateralUm = styled.div`
 `
 
 export const Meio = styled.div`
-    background-color: white;
-    padding: 20vw;    
+    display: flex;   
     width: 100%;
-
+    white-space: nowrap;
+      
     section {
+
         display: flex;
+        padding: 40vw 30vw 0 0;
+        margin: 0 0 1vw 1vw;
 
         div{
-            display: flex;
-            align-items: center;
-            margin: 10px;
-        }
+        display: flex;
+        margin: 0 0.4vw;        
 
+        label {
+            margin: 0 0.5vw;            
+        }
+        div {
+            input {
+                width: 20vw;
+            }
+        }
+        }
     }
 `
 
@@ -52,3 +61,19 @@ export const LateralDois = styled.div`
     padding: 5vw;    
     width: 100%;
 `
+
+export const FooterStyle = styled.footer`
+    background-color: DarkGrey;
+    margin: 0px;
+    position: fixed;
+    width: 100%;
+    padding: 0.1vw;
+    text-align: center;
+
+    p{
+            padding: 0;
+            margin: 0;
+            font-size: 0.8vw;
+    }
+`
+

@@ -9,27 +9,19 @@ const ConteudoPrincipal = () => {
             <LateralUm></LateralUm>
             <Meio>
                 <section>
-
                     <div>
-
-                        <label>Rementente:</label>
+                        <label>Remetente:</label>
                         <input></input>
-
                     </div>
 
                     <div>
-
                         <label>Msg:</label>
-                        <input></input>
-
+                        <div><input></input></div>
                     </div>
 
-                    
-                    
-                    <button>Enviar mensagem:</button>
+                    <button>Enviar mensagem</button>
 
-                </section>
-                
+                </section>                
             </Meio>
             <LateralDois></LateralDois>
       
@@ -39,3 +31,4 @@ const ConteudoPrincipal = () => {
 }
 
 export default ConteudoPrincipal;
+

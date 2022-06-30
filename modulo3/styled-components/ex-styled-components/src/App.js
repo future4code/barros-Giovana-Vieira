@@ -1,21 +1,15 @@
 import React from "react";
 import Cabecalho from "./components/header";
 import ConteudoPrincipal from "./components/main";
+import Rodape from "./components/footer";
+
 
 function App() {
   return (
-    <div>
-
-      <header>
-        <Cabecalho></Cabecalho>
-      </header>
-      <main>
-        <ConteudoPrincipal></ConteudoPrincipal>
-      </main>
-      <footer>
-        
-      </footer>
-
+    <div>        
+        <Cabecalho/>     
+        <ConteudoPrincipal/>       
+        <Rodape/>      
     </div>      
   )
 }
