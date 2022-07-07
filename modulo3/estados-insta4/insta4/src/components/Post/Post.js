@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './style.css'
+import {PostContainer, PostHeader, UserPhoto, PostPhoto, PostFooter} from '../../style'
 
 import {IconeComContador} from '../IconeComContador/IconeComContador'
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
@@ -19,35 +19,34 @@ function Post(props){
 
   const handleComentarioUsuario = (event) => {
     setComentarioUsuario(event.target.value)
+    console.log(comentarioUsuario)
   }
 
   const onClickCurtida = () => {
 
     setCurtido(!curtido)
 
-    if(!curtido) {
-      iconeCurtida = iconeCoracaoPreto
+    console.log('Curtiu!')
+
+    if(!curtido) {      
       setnumeroCurtidas(numeroCurtidas + 1)
-      console.log('Curtiu!')
-    } else if(iconeCurtida = iconeCoracaoPreto) {
-      iconeCurtida = iconeCoracaoBranco
-      setnumeroCurtidas(numeroCurtidas - 1)
-      console.log('Descurtiu')
+    } else {      
+      setnumeroCurtidas(numeroCurtidas - 1)      
     } 
 
   }
   
   const onClickComentario = () => {
     setComentando(!comentando)
-    if(comentando) {
-      componenteComentario = <SecaoComentario aoEnviar={aoEnviarComentario} comentario={comentarioUsuario} onChangeComentario={handleComentarioUsuario} />
-    }
     console.log(comentando)
   } 
   
   const aoEnviarComentario = () => {
     setComentando(false)
-    setNumeroComentarios(numeroComentarios + 1)
+    if (comentarioUsuario!==""){ 
+      setNumeroComentarios(numeroComentarios + 1) 
+    }
+    setComentarioUsuario("")
   }
 
   
@@ -62,19 +61,19 @@ function Post(props){
     let componenteComentario
 
     if(comentando) {
-      componenteComentario = <SecaoComentario aoEnviar={aoEnviarComentario}/>
+      componenteComentario = <SecaoComentario aoEnviar={aoEnviarComentario} comentario={comentarioUsuario} onChangeComentario={handleComentarioUsuario} />
     }
 
   return(
-    <div className = 'PostContainer'>
-      <div className = 'PostHeader'>
-        <img className = 'UserPhoto' src={props.fotoUsuario} alt={'Imagem do usuario'}/>
+    <PostContainer>
+      <PostHeader>
+        <UserPhoto src={props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{props.nomeUsuario}</p>
-      </div>
+      </PostHeader>
 
-      <img className = 'PostPhoto'src={props.fotoPost} alt={'Imagem do post'}/>
+      <PostPhoto src={props.fotoPost} alt={'Imagem do post'}/>
 
-      <div className = 'PostFooter'>
+      <PostFooter>
         <IconeComContador
           icone={iconeCurtida}
           onClickIcone={onClickCurtida}
@@ -86,9 +85,9 @@ function Post(props){
           onClickIcone={onClickComentario}
           valorContador={numeroComentarios}
         />
-      </div>
+      </PostFooter>
       {componenteComentario}
-    </div>
+    </PostContainer>
   )
 }
 
