@@ -57,3 +57,15 @@ export const PostFooter = styled.div`
     padding: 0 10px;
     justify-content: space-between;
 `
+
+export const MyForm = styled.form`
+
+    padding: 1vw;
+
+    input {
+        margin: 1vw;
+        border: solid 2px gray;
+    }
+
+    
+`
