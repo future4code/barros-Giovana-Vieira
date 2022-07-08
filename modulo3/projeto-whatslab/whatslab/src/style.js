@@ -19,46 +19,68 @@ export const HeaderStyle = styled.header`
 `
 
 export const CentroDaPagina = styled.main`
-    display: flex;   
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 `
+
 export const LateralUm = styled.div`
     background-color: orange;
-    padding: 5vw;    
-    width: 100%;
+    height: 91vh;
 `
 
 export const Meio = styled.div`
-    display: flex;   
-    width: 50vw;
+    display: flex;
+    flex-direction: column;    
     white-space: nowrap;
-    padding: 0.5vw;
+    justify-content: end;
+    align-items: center;
       
-    section {
-        display: flex;
-        padding-top: 100%;
-        justify-content: center;
-        width: 50vw;
-        margin-left: 0.2vw;
-        margin-bottom: 0.3vw;
 
-        
-        display: flex;       
 
-        input {
-            width: 10vw;
+    div {
+
+        ul {
+            list-style: none;
+            margin: 0 0 2vw 1vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+                        
+
+            div:nth-child(1){
+                background-color: green;
+            }
+
+            div:nth-child(2){
+                background-color: red;
+            }
+
+        li {
+            span {
+                font-weight: bold;
+            }
         }
-     
-        button {
-            padding: 0 0.2vw;
         }
+                       
+        form {           
+            input {
+                width: 20vw;
+            }
 
-    }
+            input:nth-child(1) {
+                width: 7vw;
+            }
+
+            button {
+                padding: 0 0.2vw;
+            }
+        }
+    }   
 `
 
 export const LateralDois = styled.div`
     background-color: orange;
-    padding: 5vw;    
-    width: 100%;
+      
+     
 `
 
 export const FooterStyle = styled.footer`

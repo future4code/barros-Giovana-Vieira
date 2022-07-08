@@ -1,3 +1,4 @@
+import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import { useState } from "react";
 import {CentroDaPagina, LateralUm, Meio, LateralDois} from "../style";
@@ -17,13 +18,30 @@ const ConteudoPrincipal = () => {
         console.log(inputMensagemUsuario)
     }
 
-    
-    const mensagens= [{remetente: inputUsuario , mensagem: inputMensagemUsuario}]
 
-    const user = mensagens.map((itens,indice) => {
-        return <p key={indice}>{itens.remetente} {itens.mensagem}</p>
+    const [listaMinhasMensagens, setListaMinhasMensagens] = useState([    ])
+
+    const minhasMensagensRenderizadas = listaMinhasMensagens.map((item, indice)=>{
+        return <li key={indice}> <span>{item.remetente}</span> {item.mensagem}</li>
     })
-    
+
+    const [listaRemetenteMensagens, setListaRemetenteMensagens] = useState([    ])
+
+    const remetenteMensagensRenderizadas = listaRemetenteMensagens.map((item, indice)=>{
+        return <li key={indice}> <span>{item.remetente}</span> {item.mensagem}</li>
+    })
+
+    const renderizar = (event) => {
+        event.preventDefault()
+        if(inputUsuario == "eu" && inputMensagemUsuario !== ""){
+            const minhasMensagens = [...listaMinhasMensagens, {mensagem: inputMensagemUsuario}]
+            setListaMinhasMensagens(minhasMensagens) 
+        } else if(inputUsuario !== "" && inputMensagemUsuario !== ""){            
+            const remetenteMensagens = [...listaRemetenteMensagens, {remetente: inputUsuario, mensagem: inputMensagemUsuario}]
+            setListaRemetenteMensagens(remetenteMensagens) 
+        }
+    }           
+     
 
     return(    
     <div>
@@ -32,17 +50,23 @@ const ConteudoPrincipal = () => {
             <LateralUm></LateralUm>
             <Meio>
 
-                {user}
-                           
-                <section>
+                <div>
+                    <ul>
+                        <div>{minhasMensagensRenderizadas}</div>
+                        <div>{remetenteMensagensRenderizadas}</div>
+                    </ul>
+                    
+                
                     <form>
                         <input type="text" required placeholder="Usuário" value={inputUsuario} onChange={mudancaNomeUsuario}></input>
-                                     
+                     
                         <input type="text" required placeholder="Mensagem" value={inputMensagemUsuario} onChange={mensagemUsuario}></input>
 
-                        <button>Enviar Mensagem</button>
+                        <button onClick={renderizar}>Enviar Mensagem</button>
                     </form>
-                </section>                
+                </div>
+
+                                        
             </Meio>
             <LateralDois></LateralDois>
       
