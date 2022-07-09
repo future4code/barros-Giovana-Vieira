@@ -41,22 +41,20 @@ export const Meio = styled.div`
 
         ul {
             list-style: none;
-            margin: 0 0 2vw 1vw;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-                        
+        p {
 
-            div:nth-child(1){
-                background-color: green;
-            }
+            border: solid 1px gray;
+            border-radius: 2vw;
+            padding: 0.5vw;
+            margin: 1vw;
+            font-size: 0.8vw;
+            white-space: normal;
+            
 
-            div:nth-child(2){
-                background-color: red;
-            }
-
-        li {
             span {
                 font-weight: bold;
+                font-size: 0.8vw;
+                text-align: left;
             }
         }
         }
@@ -64,6 +62,8 @@ export const Meio = styled.div`
         form {           
             input {
                 width: 20vw;
+                padding: 0.3vw;
+                border: solid 1px grey;
             }
 
             input:nth-child(1) {
@@ -71,8 +71,18 @@ export const Meio = styled.div`
             }
 
             button {
-                padding: 0 0.2vw;
+                padding: 0.3vw;
+                border: solid 1px grey;
+                font-weight: bold;
             }
+        }
+
+        div {
+            text-align: left;
+        }
+
+        article {
+            text-align: right;
         }
     }   
 `

@@ -18,18 +18,20 @@ const ConteudoPrincipal = () => {
         console.log(inputMensagemUsuario)
     }
 
+   
 
-    const [listaMinhasMensagens, setListaMinhasMensagens] = useState([    ])
+    const [listaMinhasMensagens, setListaMinhasMensagens] = useState([])
 
     const minhasMensagensRenderizadas = listaMinhasMensagens.map((item, indice)=>{
-        return <li key={indice}> <span>{item.remetente}</span> {item.mensagem}</li>
+        return  <li key={indice}> <p><span>{item.remetente}</span> {item.mensagem}</p></li>  
     })
 
-    const [listaRemetenteMensagens, setListaRemetenteMensagens] = useState([    ])
+    const [listaRemetenteMensagens, setListaRemetenteMensagens] = useState([])
 
-    const remetenteMensagensRenderizadas = listaRemetenteMensagens.map((item, indice)=>{
-        return <li key={indice}> <span>{item.remetente}</span> {item.mensagem}</li>
+    const remetenteMensagensRenderizadas = listaRemetenteMensagens.map((item, indice)=>{        
+        return <li key={indice}> <p><span>{item.remetente}</span> {item.mensagem}</p></li>
     })
+
 
     const renderizar = (event) => {
         event.preventDefault()
@@ -39,8 +41,10 @@ const ConteudoPrincipal = () => {
         } else if(inputUsuario !== "" && inputMensagemUsuario !== ""){            
             const remetenteMensagens = [...listaRemetenteMensagens, {remetente: inputUsuario, mensagem: inputMensagemUsuario}]
             setListaRemetenteMensagens(remetenteMensagens) 
-        }
+        } 
     }           
+
+   
      
 
     return(    
@@ -51,9 +55,9 @@ const ConteudoPrincipal = () => {
             <Meio>
 
                 <div>
-                    <ul>
-                        <div>{minhasMensagensRenderizadas}</div>
+                    <ul>                        
                         <div>{remetenteMensagensRenderizadas}</div>
+                        <article>{minhasMensagensRenderizadas}</article>
                     </ul>
                     
                 
