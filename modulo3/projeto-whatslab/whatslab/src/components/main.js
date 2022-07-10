@@ -1,7 +1,6 @@
-import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import { useState } from "react";
-import {CentroDaPagina, LateralUm, Meio, LateralDois} from "../style";
+import {CentroDaPagina, LateralUm, Meio, LateralDois, MinhaMensagem, MensagemRemetente} from "../style";
 
 const ConteudoPrincipal = () => {
 
@@ -17,8 +16,6 @@ const ConteudoPrincipal = () => {
         setInputMensagemUsuario(event.target.value)
         console.log(inputMensagemUsuario)
     }
-
-   
 
     const [listaMinhasMensagens, setListaMinhasMensagens] = useState([])
 
@@ -56,8 +53,8 @@ const ConteudoPrincipal = () => {
 
                 <div>
                     <ul>                        
-                        <div>{remetenteMensagensRenderizadas}</div>
-                        <article>{minhasMensagensRenderizadas}</article>
+                        <MinhaMensagem>{minhasMensagensRenderizadas}</MinhaMensagem>
+                        <MensagemRemetente>{remetenteMensagensRenderizadas}</MensagemRemetente>
                     </ul>
                     
                 

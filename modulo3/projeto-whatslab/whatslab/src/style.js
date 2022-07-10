@@ -45,10 +45,12 @@ export const Meio = styled.div`
 
             border: solid 1px gray;
             border-radius: 2vw;
-            padding: 0.5vw;
+            padding: 0.7vw;
             margin: 1vw;
             font-size: 0.8vw;
             white-space: normal;
+            display: flex;
+            flex-direction: column;
             
 
             span {
@@ -76,21 +78,11 @@ export const Meio = styled.div`
                 font-weight: bold;
             }
         }
-
-        div {
-            text-align: left;
-        }
-
-        article {
-            text-align: right;
-        }
     }   
 `
 
 export const LateralDois = styled.div`
-    background-color: orange;
-      
-     
+    background-color: orange;         
 `
 
 export const FooterStyle = styled.footer`
@@ -104,4 +96,9 @@ export const FooterStyle = styled.footer`
         font-size: 0.8vw;
     }
 `
-
+export const MinhaMensagem = styled.div`
+    text-align: right;
+`
+export const MensagemRemetente = styled.div`
+    text-align: left;
+`
