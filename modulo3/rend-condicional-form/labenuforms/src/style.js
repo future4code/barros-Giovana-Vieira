@@ -16,5 +16,19 @@ export const Formulario = styled.form`
         text-align: center;
         font-size: 0.9vw;
     }
+
+    button {
+        margin: 1vw;
+    }
+`
+
+export const Conteudo = styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    button {
+        margin: 1vw;
+    }
 `
 
