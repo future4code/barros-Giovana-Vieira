@@ -15,49 +15,10 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
 
-  const [etapa, setEtapa] = useState(1)
-
-  const irParaProximaEtapa = () => {
-    setEtapa(etapa+1)
-  }
-   
-  const renderizaEtapa = () => {
-
-    switch(etapa){
-      case 1:            
-        return (
-          <DadosGerais/>   
-        )               
-      break
-      case 2:        
-        return (
-          <Graduados/> 
-        )    
-      break
-      case 3:
-        return (
-          <NaoGraduados/>
-        )
-      break
-      case 4:        
-        return (
-          <Agradecimento/>
-        )                        
-      break
-      default:        
-        return (
-          null
-        )       
-      break
-    }    
-  } 
-
-  return (
-    
+  return (    
     <Conteudo>
     <GlobalStyle/>
-        {renderizaEtapa()}
-        <button onClick={irParaProximaEtapa}>Próxima Etapa</button>
+    <DadosGerais/>
     </Conteudo>
   );
 }

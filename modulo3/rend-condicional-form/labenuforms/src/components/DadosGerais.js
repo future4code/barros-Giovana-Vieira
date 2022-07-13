@@ -1,78 +1,85 @@
 import React, { useState } from "react";
 import { Formulario } from "../style";
+import Agradecimento from "./Agradecimento";
+import Graduados from "./Graduados";
+import NaoGraduados from "./NaoGraduados";
 
 
 const DadosGerais = () =>{
 
-    const [inputNome, setInputNome] = useState("")
-    const [inputIdade, setInputIdade] = useState("")
-    const [inputEmail, setInputEmail] = useState("")
-    const [medioIncompleto, setMedioIncompleto] = useState("")
-    const [medioCompleto, setMedioCompleto] = useState("")
-    const [superiorCompleto, setSuperiorCompleto] = useState("")
-    const [superiorIncompleto, setSuperiorIncompleto] = useState("")
+    const escolaridade = [
+        {id: 1 , nome:"Ensino Médio Incompleto"},
+        {id: 2 , nome:"Ensino Médio Completo"},
+        {id: 3, nome:"Ensino Superior Incompleto"},
+        {id: 4, nome: "Ensino Superior Completo"}
+    ]
 
 
-    const handleInputNome = (event) => {
-        setInputNome(event.target.value)
-        console.log(inputNome)
-    }
+    const [etapa, setEtapa] = useState(1) 
 
-    const handleInputIdade = (event) => {
-        setInputIdade(event.target.value)
-        console.log(inputIdade)
-    }
+        
+    const renderizaEtapa = (event) => {
+        event.preventDefault()
+        setEtapa(etapa+1)    
+      }
 
-    const handleInputEmail = (event) => {
-        setInputEmail(event.target.value)
-        console.log(inputEmail)
-    }
-
-    const handleMedioIncompleto = (event) => {
-        setMedioIncompleto(event.target.value)
-        console.log(medioIncompleto)
-    }
-
-    const handleMedioCompleto = (event) => {
-        setMedioCompleto(event.target.value)
-        console.log(medioCompleto)
-    }
-
-    const handleSuperiorIncompleto = (event) => {
-        setSuperiorIncompleto(event.target.value)
-        console.log(superiorIncompleto)
-    }
-
-    const handleSuperiorCompleto = (event) => {
-        setSuperiorCompleto(event.target.value)
-        console.log(superiorCompleto)
-    }
-
+    let retorno;
     
 
+    switch(etapa){
+        case 1:
+        retorno = <NaoGraduados/>
+        break
+        case 2:
+        retorno = <NaoGraduados/>
+        break
+        case 3:
+        retorno = <NaoGraduados/>
+        break
+        case 4:
+        retorno = <Graduados/>
+        break
+        case 5:
+        retorno = <Agradecimento/>
+        break
+        default: 
+        retorno = <Agradecimento/>
+        break
+    }
+
+
     return (
+
+        <div>
+
         <Formulario>
 
             <h1>LabenuForms</h1>
 
             <label>Nome:</label>
-            <input type="text" value={inputNome} onChange={handleInputNome}></input>
+            <input type="text"></input>
 
             <label>Idade:</label>
-            <input type="number" value={inputIdade} onChange={handleInputIdade}></input>
+            <input type="number"></input>
 
             <label>E-mail:</label>
-            <input type="email" value={inputEmail} onChange={handleInputEmail}></input>
+            <input type="email"></input>
 
             <label>Qual o seu grau de escolaridade?</label>
-            <select>
-                <option value={medioIncompleto} onChange={handleMedioIncompleto}>Ensino Médio Incompleto</option>
-                <option value={medioCompleto} onChange={handleMedioCompleto}>Ensino Médio Completo</option>
-                <option value={superiorIncompleto} onChange={handleSuperiorIncompleto}>Ensino Superior Incompleto</option>
-                <option value={superiorCompleto} onChange={handleSuperiorCompleto}>Ensino Superior Completo</option>
+            
+            <select value={etapa} onChange={e => setEtapa(e.target.value)}>
+                {escolaridade.map((item, indice)=> <option key={indice} value={item.id}>{item.nome}</option>)}
             </select>
 
+            <button onClick={renderizaEtapa}>Selecionar</button>
+
+            
+
         </Formulario>
+
+        {retorno}
+
+        </div>
     )
 }
 
