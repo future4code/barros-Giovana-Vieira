@@ -1,12 +1,8 @@
 ## IMAGEM DOS COMPONENTES:
-![Imagem dos componentes]
-(IMAGEM COMPONENTES.jpg)
-
+![IMAGEM COMPONENTES](https://user-images.githubusercontent.com/102439115/179079530-61df7a6e-3c8d-4c48-9229-015cf98d1b33.jpg)
 
 ## DIAGRAMA DOS COMPONENTES:
-![Diagrama dos componentes]
-(DIAGRAMA COMPONENTES.jpg)
+![DIAGRAMA COMPONENTES](https://user-images.githubusercontent.com/102439115/179079604-7df68079-6917-48e7-9076-2a1338d77205.jpg)
 
 ## DIAGRAMA DOS ESTADOS DENTRO DOS COMPONENTES:
-![Diagrama dos estados dentro dos componentes]
-(DIAGRAMA ESTADOS.jpg)
+![DIAGRAMA ESTADOS](https://user-images.githubusercontent.com/102439115/179079661-1c1a3e2e-7542-4742-90e3-64f3ae19a019.jpg)
