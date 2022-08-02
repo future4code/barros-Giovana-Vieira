@@ -1,18 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
 
-const TelaUm = ({inputName, inputEmail, setInputName, setInputEmail, usuarios, setUsuarios}) =>{
+const TelaUm = ({inputName, inputEmail, setInputName, setInputEmail, setSeletor}) =>{
 
     const body = {
         "name": inputName,
         "email": inputEmail
     }
-
-    useEffect(()=>{
-        createUser()
-    },[])
-
-    const createUser= () =>{
+      const createUser= () =>{
     
         axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users", body, {
             headers: {
@@ -20,16 +15,17 @@ const TelaUm = ({inputName, inputEmail, setInputName, setInputEmail, usuarios, s
             }
         })
         .then((response)=>{
+            alert(response.data)
             console.log(response.data)
         })
         .catch((error)=>{
+            alert(error.response.data)
             console.log(error.response.data)
         })
 
         setInputName("")
         setInputEmail("")
     }
-
 
     return (
         <>

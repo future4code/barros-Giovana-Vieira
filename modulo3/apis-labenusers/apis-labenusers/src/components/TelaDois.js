@@ -1,8 +1,9 @@
 import React from "react";
 
-const TelaDois = () =>{
+const TelaDois = ({users}) =>{
     return(
         <div>
+            {users}
         </div>
     )
 }

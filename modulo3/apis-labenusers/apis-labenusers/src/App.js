@@ -3,6 +3,7 @@ import TelaDois from "./components/TelaDois";
 import TelaUm from "./components/TelaUm";
 import axios from "axios";
 
+
 function App() {
 
   const [usuarios, setUsuarios] = useState([])
@@ -20,6 +21,7 @@ function App() {
   }
   })
   .then((response)=>{
+    console.log(response.data)
     setUsuarios(response.data)
   })
   .catch((error)=>{
@@ -27,19 +29,41 @@ function App() {
   })
   }
 
-  console.log(usuarios)
+  const deletarUser = (user) =>{
+    axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${user.id}`, {
+      headers: {
+        Authorization: "giovana-vieira-barros"
+    }
+    })
+    .then((response)=>{
+      alert(response.data)
+      getAllUsers()
+    })
+    .catch((error)=>{
+      alert(error.response.data)
+      console.log(error.response.data)
+    })
+  }
 
+  const users = usuarios.map((user)=>{
+    return (
+      <li key={user.id}>{user.name}
+      <button onClick={()=>{deletarUser(user)}}>Deletar</button>
+      </li>
+      
+    )
+  })
+
+  const trocar= (e) =>{
+    e.preventDefault()
+  }
+  
 
   return (
     <>
+      <button onClick={trocar}>Trocar de Tela</button>
       <TelaUm inputName={inputName} inputEmail={inputEmail} setInputName={setInputName} setInputEmail={setInputEmail} usuarios={usuarios} setUsuarios={setUsuarios}></TelaUm>
-      <TelaDois>
-      {usuarios.map=((usuario)=>{
-                return (
-                    <li key={usuario.id}>{usuario.name}</li>
-                )
-            })}
-      </TelaDois>
+      <TelaDois users={users}/>
     </>
   )
 }
