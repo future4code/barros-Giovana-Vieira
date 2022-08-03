@@ -1,8 +1,7 @@
 import React from "react";
-import HeaderDaAplicacao from "./components/Header/HeaderDaAplicacao";
-import FooterDaAplicacao from "./components/Footer/FooterDaAplicacao"
 import { createGlobalStyle } from "styled-components";
-import { ContainerPrincipal, AstroMatch, Card } from "./style";
+import TelaInicial from "./components/Tela Inicial/TelaInicial";
+
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -15,25 +14,7 @@ function App() {
   return (
     <>
     <GlobalStyle/>
-      <ContainerPrincipal>
-
-        <div/>
-
-        <AstroMatch>
-
-          <HeaderDaAplicacao/>
-          <main>
-            <Card>
-              
-            </Card>
-          </main>
-          <FooterDaAplicacao/>
-        </AstroMatch>
-
-        <div/>
-      
-      
-      </ContainerPrincipal>    
+    <TelaInicial/>      
     </>    
   );
 }
