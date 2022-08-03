@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const TelaUm = ({inputName, inputEmail, setInputName, setInputEmail, setSeletor}) =>{
+const TelaUm = ({inputName, inputEmail, setInputName, setInputEmail, setTrocarTela}) =>{
 
     const body = {
         "name": inputName,
@@ -27,8 +27,14 @@ const TelaUm = ({inputName, inputEmail, setInputName, setInputEmail, setSeletor}
         setInputEmail("")
     }
 
+    const trocar = (e)=>{
+        e.preventDefault()
+        setTrocarTela(true)
+    }
+
     return (
         <>
+            <button onClick={trocar}>Trocar Tela</button>       
             <form>
                 <input type="text" value={inputName} placeholder="Nome" onChange={(e)=>{setInputName(e.target.value)}}></input>
                 <input type="email" value={inputEmail} placeholder="E-mail" onChange={(e)=>{setInputEmail(e.target.value)}}></input>
