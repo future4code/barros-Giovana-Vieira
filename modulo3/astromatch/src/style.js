@@ -41,10 +41,21 @@ export const Card = styled.div`
     }
 `
 export const Botoes = styled.section`
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+
+    div{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    article{
+        display: flex;
+        justify-content: center;
+    }
     
-    button{
+    button{        
+        border-style: none;
+
         img{
             width: 6vw;
             background-color: white;
