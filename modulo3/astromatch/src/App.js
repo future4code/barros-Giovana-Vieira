@@ -10,30 +10,30 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 `
-
 function App() {
 
   const [profiles, setProfiles] = useState({})
   const [match, setMatch] = useState(true)
   const [arrayMatches, setArrayMatches] = useState([])
-
+  const [seletor, setSeletor] = useState(true)
 
     useEffect(()=>{
       getProfileToChoose()      
     },[])
-
-
+    
     const getProfileToChoose = ()=>{
       axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/giovana-vieira-barros/person")
         .then((response)=>{
           setProfiles(response.data.profile)
         })
         .catch((error)=>{
-            console.log(error.response.data)
+          console.log(error.response.data)
         })
     }
 
-    const choosePersonTrue = ()=>{    
+    const choosePersonTrue = ()=>{
+      
+      getProfileToChoose()
     
       const body= {
         "id": profiles.id,
@@ -41,7 +41,6 @@ function App() {
       }
       axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/giovana-vieira-barros/choose-person", body)
       .then((response)=>{
-        console.log(response.data.isMatch)
         setMatch(match)
       })
       .catch((error)=>{
@@ -51,13 +50,14 @@ function App() {
 
     const choosePersonFalse = ()=>{      
 
+      getProfileToChoose()
+
       const body= {
         "id": profiles.id,
         "choice": false
       }
       axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/giovana-vieira-barros/choose-person", body)
       .then((response)=>{
-        console.log(response.data.isMatch)
         setMatch(false)
       })
       .catch((error)=>{
@@ -66,9 +66,11 @@ function App() {
     }
 
     const getMatches = ()=>{
+
+      setSeletor(false)
+
       axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/giovana-vieira-barros/matches")
       .then((response)=>{
-        console.log(response.data)
         setArrayMatches(response.data.matches)
       })
       .catch((error)=>{
@@ -86,12 +88,28 @@ function App() {
       })
     }
 
+    const seletorPagina = ()=>{
+      
+      if(seletor === true){
+        return(
+          <TelaInicial profiles={profiles} choosePersonTrue={choosePersonTrue} choosePersonFalse={choosePersonFalse} clearEverything={clearEverything} getMatches={getMatches}/>
+        )
+      } else{
+        return(
+          <Matches voltarInicio={voltarInicio} arrayMatches={arrayMatches} setSeletor={setSeletor} getMatches={getMatches}/>
+        )
+      }
+    }
+
+    const voltarInicio = (e)=> {
+      e.preventDefault()
+      setSeletor(true)
+  }
 
   return (
     <>
     <GlobalStyle/>
-    <TelaInicial profiles={profiles} choosePersonTrue={choosePersonTrue} choosePersonFalse={choosePersonFalse} clearEverything={clearEverything} getMatches={getMatches}/>
-    <Matches arrayMatches={arrayMatches}/>
+    {seletorPagina()}
     </>    
   );
 }

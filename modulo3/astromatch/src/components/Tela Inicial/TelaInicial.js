@@ -1,6 +1,7 @@
 import { AstroMatch, Botoes, Card, ContainerPrincipal } from "../../style"
 import HeaderDaAplicacao from "../Header/HeaderDaAplicacao"
-
+import imgLike from "../../img/like.png"
+import imgDeslike from "../../img/deslike.png"
 
 const TelaInicial = ({profiles, choosePersonTrue, choosePersonFalse, clearEverything, getMatches})=>{
    
@@ -19,8 +20,8 @@ const TelaInicial = ({profiles, choosePersonTrue, choosePersonFalse, clearEveryt
                     </main>
                     <Botoes>
                         <div>
-                            <button onClick={choosePersonFalse}><img src="https://cdn-icons-png.flaticon.com/512/6520/6520105.png" alt="Botão Deslike" /></button>
-                            <button onClick={choosePersonTrue}><img src="https://cdn-icons-png.flaticon.com/512/8059/8059390.png" alt="Botão like" /></button>
+                            <button onClick={choosePersonFalse}><img src={imgDeslike} alt="Botão Deslike" /></button>
+                            <button onClick={choosePersonTrue}><img src={imgLike} alt="Botão like" /></button>
                         </div>
                         <article>
                             <button onClick={clearEverything}>Deletar tudo</button>
