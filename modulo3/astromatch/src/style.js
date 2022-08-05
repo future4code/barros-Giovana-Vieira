@@ -20,8 +20,8 @@ export const Card = styled.div`
     padding: 1vw;
    
     img {
-        width: 30vw;
-        height: 55vh;
+        width: 25vw;
+        height: 50vh;
         background-color: green;
         margin-bottom: 0.5vw;
     }
@@ -57,7 +57,7 @@ export const Botoes = styled.section`
         border-style: none;
 
         img{
-            width: 6vw;
+            width: 4.5vw;
             background-color: white;
         }
     }

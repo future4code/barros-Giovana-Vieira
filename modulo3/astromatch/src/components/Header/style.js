@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Header = styled.header`
     display: flex;
-    border: solid 0.3vw lightblue;
     justify-content: space-around;
     align-items: center;
     text-align: center;
@@ -10,8 +9,9 @@ export const Header = styled.header`
 
 
     button {
+        border-style: none;
         img{
-            width: 3vw;
+            width: 4.5vw;
             background-color: white;
         }
     }
@@ -20,7 +20,7 @@ export const Header = styled.header`
         font-size: 1.8vw;
         font-weight: bold;
         span {
-            color: green;
+            color: #0ABAB5;
         }
     }
 `
