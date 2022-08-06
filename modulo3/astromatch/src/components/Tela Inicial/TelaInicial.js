@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { AstroMatch, Botoes, BotaoDelete, Card, ContainerTelaInicial } from "../../style"
 import HeaderTelaInicial from "../Headers/HeaderTelaInicial"
+=======
+import { AstroMatch, Botoes, Card, ContainerPrincipal } from "../../style"
+import HeaderDaAplicacao from "../Header/HeaderDaAplicacao"
+>>>>>>> 711f0c08454249d03ab099d259a67e26b3418947
 import imgLike from "../../img/like.png"
 import imgDeslike from "../../img/deslike.png"
 
@@ -18,6 +23,7 @@ const TelaInicial = ({profiles, choosePersonTrue, choosePersonFalse, clearEveryt
                             <span>{profiles.bio}</span>
                         </Card>
                     </main>
+<<<<<<< HEAD
                     <div>
                         <Botoes>
                             <button onClick={choosePersonFalse}><img src={imgDeslike} alt="Botão Deslike" /></button>
@@ -27,6 +33,17 @@ const TelaInicial = ({profiles, choosePersonTrue, choosePersonFalse, clearEveryt
                             <button onClick={clearEverything}>Limpar swipes e matches</button>
                         </BotaoDelete>                        
                     </div>
+=======
+                    <Botoes>
+                        <div>
+                            <button onClick={choosePersonFalse}><img src={imgDeslike} alt="Botão Deslike" /></button>
+                            <button onClick={choosePersonTrue}><img src={imgLike} alt="Botão like" /></button>
+                        </div>
+                        <article>
+                            <button onClick={clearEverything}>Deletar tudo</button>
+                         </article>
+                    </Botoes>                                     
+>>>>>>> 711f0c08454249d03ab099d259a67e26b3418947
             </AstroMatch>
             <div></div>
         </ContainerTelaInicial>      

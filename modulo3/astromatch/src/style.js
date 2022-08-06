@@ -22,10 +22,17 @@ export const Card = styled.section`
     border-top: solid 0.2vw #66CDAA;
     border-bottom: solid 0.2vw #66CDAA;
     img {
+<<<<<<< HEAD
         width: 20vw;
         height: 45vh;
         margin-bottom: 1vw;
         border-radius: 2vw;
+=======
+        width: 25vw;
+        height: 50vh;
+        background-color: green;
+        margin-bottom: 0.5vw;
+>>>>>>> 711f0c08454249d03ab099d259a67e26b3418947
     }
 
     h1{
@@ -60,6 +67,10 @@ export const Botoes = styled.section`
 
         img{
             width: 4.5vw;
+<<<<<<< HEAD
+=======
+            background-color: white;
+>>>>>>> 711f0c08454249d03ab099d259a67e26b3418947
         }
     }
 `

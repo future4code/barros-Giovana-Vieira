@@ -3,7 +3,14 @@ import { BotaoDelete, CardMatch, ContainerTelaMatches, MatchesContainer } from "
 
 const Matches = ({arrayMatches, voltarInicio, clearEverything})=>{
 
+<<<<<<< HEAD
     const arrayMatchesMapeado = arrayMatches.map((item)=>{
+=======
+
+const Matches = ({arrayMatches, voltarInicio, getMatches})=>{
+
+   const arrayMatchesMapeado = arrayMatches.map((item)=>{
+>>>>>>> 711f0c08454249d03ab099d259a67e26b3418947
     return(
          <li key={item.id}>
         <CardMatch>
@@ -12,6 +19,7 @@ const Matches = ({arrayMatches, voltarInicio, clearEverything})=>{
         </CardMatch></li>
     )
     })
+<<<<<<< HEAD
     
     return (
     <>
@@ -34,6 +42,14 @@ const Matches = ({arrayMatches, voltarInicio, clearEverything})=>{
             <div></div>          
         </ContainerTelaMatches>     
     </>
+=======
+
+    return (
+        <>
+            <button onClick={voltarInicio}>Voltar ao Início</button>
+            {arrayMatchesMapeado}
+        </>
+>>>>>>> 711f0c08454249d03ab099d259a67e26b3418947
     )
  }
  

@@ -9,7 +9,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 711f0c08454249d03ab099d259a67e26b3418947
 `
 function App() {
 
@@ -97,7 +100,11 @@ function App() {
         )
       } else{
         return(
+<<<<<<< HEAD
           <Matches voltarInicio={voltarInicio} arrayMatches={arrayMatches} setSeletor={setSeletor} getMatches={getMatches} clearEverything={clearEverything}/>
+=======
+          <Matches voltarInicio={voltarInicio} arrayMatches={arrayMatches} setSeletor={setSeletor} getMatches={getMatches}/>
+>>>>>>> 711f0c08454249d03ab099d259a67e26b3418947
         )
       }
     }
@@ -111,7 +118,11 @@ function App() {
   <>
     <GlobalStyle/>
     {seletorPagina()}
+<<<<<<< HEAD
   </>    
+=======
+    </>    
+>>>>>>> 711f0c08454249d03ab099d259a67e26b3418947
   );
 }
 
