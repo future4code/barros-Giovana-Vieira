@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { Button, HomeContainer } from "./style"
 
 
 const HomePage = ()=>{
@@ -6,11 +7,15 @@ const HomePage = ()=>{
     const navigate = useNavigate()
 
     return(
-        <>
-        <h1>Home</h1>
-        <button onClick={()=>{navigate("/trips/list")}}>Trips List</button>
-        <button onClick={()=>{navigate("/login")}}>Administrative Area</button>
-        </>
+        <HomeContainer>
+
+            <h1>LabeX</h1>
+            <div>
+                <Button onClick={()=>{navigate("/trips/list")}}>Trips List</Button>
+                <Button onClick={()=>{navigate("/login")}}>Administrative Area</Button>
+            </div>
+        
+        </HomeContainer>
     )
 }
 

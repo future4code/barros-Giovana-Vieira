@@ -53,25 +53,25 @@ const ApplicationFormPage = ({dataTrips})=>{
 
         <h1>Application Form</h1>
         <form>
-            <label for="trip">Choose a Trip</label>
+            <label htmlFor="trip">Choose a Trip:</label>
             <select id="trip" name="trip" value={chooseTrip} onChange={(e)=>{setChooseTrip(e.target.value)}}>
                 <option>Choose a Trip</option>
                 {tripsOptions}
             </select>
 
-            <label for="name">Name</label>
-            <input id="name" name="name" value={name} onChange={(e)=>{setName(e.target.value)}} required placeholder="Name" type="text"/>
+            <label htmlFor="name">Name:</label>
+            <input id="name" name="name" value={name} onChange={(e)=>{setName(e.target.value)}} type="text" required/>
 
-            <label for="age">Age</label>
-            <input id="age" name="age" value={age} onChange={(e)=>{setAge(e.target.value)}} required placeholder="Age" type="number"/>
+            <label htmlFor="age">Age:<br></br>(You need to have at least 18 years old to apply.)</label>
+            <input id="age" name="age" value={age} onChange={(e)=>{setAge(e.target.value)}} type="number" required/>
 
-            <label for="application">Applicantion Text</label>
-            <input id="application" name="application" value={applicationText} onChange={(e)=>{setApplicationText(e.target.value)}} required placeholder="Application Text" type="text"/>
+            <label htmlFor="application">Applicantion Text:</label>
+            <input id="application" name="application" value={applicationText} onChange={(e)=>{setApplicationText(e.target.value)}} type="text" required/>
 
-            <label for="profession">Profession</label>
-            <input id="profession" name="profession" value={profession} onChange={(e)=>{setProfession(e.target.value)}} required placeholder="Profession" type="text"/>
+            <label htmlFor="profession">Profession:</label>
+            <input id="profession" name="profession" value={profession} onChange={(e)=>{setProfession(e.target.value)}} type="text" required/>
 
-            <label for="country">Choose a Country</label>    
+            <label htmlFor="country">Choose a Country:</label>    
             <select id="country" name="country" value={chooseCountry} onChange={(e)=>{setChooseCountry(e.target.value)}}>
                 <option>Choose a Country</option>
                 <option value="Afghanistan">Afghanistan</option>
@@ -330,7 +330,7 @@ const ApplicationFormPage = ({dataTrips})=>{
         </form>
         <div>
             <button onClick={()=>{navigate(-1)}}>Return</button>
-            <button onClick={applyToTrip}>Send</button>
+            <button onClick={age>18?applyToTrip:null}>Send</button>
         </div>
 
         </Application>
