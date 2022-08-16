@@ -8,15 +8,25 @@ export const TripsListContainer = styled.div`
     text-align: center;
 
     h1{
-        margin: 1.5vw 0;
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+        font-size: 2vw;
     }
 
     button{
-        margin: 0.5vw 5vw;
-        width: 6vw;
         white-space: nowrap;
         border-style: double;
         background-color: white;
+        margin: 1vw 5vw;
+        width: 10vw;
+        padding: 0.3vw;
+        white-space: nowrap;
+        font-size: 1vw;
+
+    :hover{
+        transform: scale(1.2);
+        transition: all 0.5s;
+    }
     }
 `
 

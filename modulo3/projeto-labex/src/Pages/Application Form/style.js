@@ -8,12 +8,19 @@ export const Application = styled.section`
     text-align: center;
     
     h1{
-        margin: 2vw 0;
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+        font-size: 2vw;
     }
 
     form{
         display: flex;
         flex-direction: column;
+        align-items: center;
+
+        label{
+            font-size: 1vw;
+        }
 
         select{
             margin: 1vw 0;
@@ -21,15 +28,25 @@ export const Application = styled.section`
 
         input {
             margin: 1vw 0;
+            width: 25vw;
+        }        
+        div{        
+            button{
+                white-space: nowrap;
+                border-style: double;
+                background-color: white;
+                margin: 1vw 5vw;
+                width: 10vw;
+                padding: 0.3vw;
+                white-space: nowrap;
+                font-size: 1vw;
+    
+                :hover{
+                    transform: scale(1.2);
+                    transition: all 0.5s;
+                }
+             }
         }
-        
     }
 
-    div{
-        display: flex;
-        
-        button{
-            margin: 0 2vw;
-        }
-    }
 `

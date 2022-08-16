@@ -7,7 +7,9 @@ export const HomeContainer = styled.section`
     align-items: center;
 
     h1{
-        margin: 1.5vw 0;
+        margin-top: 2vw;
+        margin-bottom: 6vw;
+        font-size: 3.5vw;
     }
 
 `
@@ -17,8 +19,13 @@ export const Button = styled.button`
     border-style: double;
     background-color: white;
     margin: 1vw 5vw;
-    width: 10vw;
+    width: 20vw;
     padding: 0.3vw;
     white-space: nowrap;
-    font-size: 1vw;
+    font-size: 2vw;
+
+    :hover{
+        transform: scale(1.2);
+        transition: all 0.5s;
+    }
 `

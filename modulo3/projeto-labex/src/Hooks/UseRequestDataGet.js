@@ -14,13 +14,11 @@ const useRequestData=(url)=>{
         axios.get(url,)
         .then((response)=>{
         setIsLoading(false)
-        console.log(response.data.trips)
         setData(response.data.trips)
     })
         .catch((er)=>{
         setIsLoading(false)
-        console.log(er.response.data)
-        setError(er.response.data)
+        setError(er.response.data.message)
         })
     },[])
 

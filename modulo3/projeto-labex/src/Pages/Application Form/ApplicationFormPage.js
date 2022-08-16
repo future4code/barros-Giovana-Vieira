@@ -1,49 +1,40 @@
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Application } from "./style"
 import axios from "axios"
+import useForm from "../../Hooks/useForm"
+import { baseUrl } from "../../Constants/Constants"
+
 
 const ApplicationFormPage = ({dataTrips})=>{
 
-    const [chooseTrip, setChooseTrip] = useState("")
-    const [name, setName] = useState("")
-    const [age, setAge] = useState(0)
-    const [applicationText, setApplicationText] = useState("")
-    const [profession, setProfession] = useState("")
-    const [chooseCountry, setChooseCountry] = useState("")
+    const [setForm, form, onChange] = useForm({trip: "", name: "", age: "", application: "", profession: "", country: ""})
 
     const navigate = useNavigate()
 
     const tripsOptions = dataTrips && dataTrips.map((trip, index)=>{
-        return <option value={trip.id} key={index}>{trip.name}</option>
+        return <option value={trip.id} key={index}>{trip.name} - {trip.planet}</option>
     })
 
     const body = {
-        "name": name,
-        "age": age,
-        "applicationText": applicationText,
-        "profession": profession,
-        "country": chooseCountry
+        "name": form.name,
+        "age": form.age,
+        "applicationText": form.application,
+        "profession": form.profession,
+        "country": form.country
     }
 
-    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/giovana-vieira-barros/trips/${chooseTrip}/apply`
+    const url = `${baseUrl}/trips/${form.trip}/apply`
 
-    const applyToTrip=()=>{
+    const applyToTrip=(e)=>{
+        e.preventDefault()
         axios.post(url, body)
         .then((response)=>{
-            console.log(response.data)
             alert("Successful application!!!")
         })
         .catch((er)=>{
-            console.log(er.response.data)
-            alert(er.response.data)
+            alert(er.response.data.message)
         })
-        setChooseTrip("")
-        setName("")
-        setAge(0)
-        setApplicationText("")
-        setProfession("")
-        setChooseCountry("")
+        /* setForm("") */
     }
 
 
@@ -52,27 +43,27 @@ const ApplicationFormPage = ({dataTrips})=>{
         <Application>
 
         <h1>Application Form</h1>
-        <form>
+        <form onSubmit={applyToTrip}>
             <label htmlFor="trip">Choose a Trip:</label>
-            <select id="trip" name="trip" value={chooseTrip} onChange={(e)=>{setChooseTrip(e.target.value)}}>
+            <select id="trip" name="trip" value={form.trip} onChange={onChange} required>
                 <option>Choose a Trip</option>
                 {tripsOptions}
             </select>
 
             <label htmlFor="name">Name:</label>
-            <input id="name" name="name" value={name} onChange={(e)=>{setName(e.target.value)}} type="text" required/>
+            <input id="name" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ' ']{3,100}$" name="name" value={form.name} onChange={onChange} type="text" required/>
 
             <label htmlFor="age">Age:<br></br>(You need to have at least 18 years old to apply.)</label>
-            <input id="age" name="age" value={age} onChange={(e)=>{setAge(e.target.value)}} type="number" required/>
+            <input id="age" min={18} name="age" value={form.age} onChange={onChange} type="number" required/>
 
             <label htmlFor="application">Applicantion Text:</label>
-            <input id="application" name="application" value={applicationText} onChange={(e)=>{setApplicationText(e.target.value)}} type="text" required/>
+            <input id="application" pattern="^.{30,}" name="application" value={form.application} onChange={onChange} type="text" required/>
 
             <label htmlFor="profession">Profession:</label>
-            <input id="profession" name="profession" value={profession} onChange={(e)=>{setProfession(e.target.value)}} type="text" required/>
+            <input id="profession" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ' ']{10,100}$" name="profession" value={form.profession} onChange={onChange} type="text" required/>
 
             <label htmlFor="country">Choose a Country:</label>    
-            <select id="country" name="country" value={chooseCountry} onChange={(e)=>{setChooseCountry(e.target.value)}}>
+            <select id="country" name="country" value={form.country} onChange={onChange} required>
                 <option>Choose a Country</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Aland Islands">Aland Islands</option>
@@ -327,11 +318,11 @@ const ApplicationFormPage = ({dataTrips})=>{
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
         </select>
-        </form>
         <div>
-            <button onClick={()=>{navigate(-1)}}>Return</button>
-            <button onClick={age>18?applyToTrip:null}>Send</button>
+            <button type="button" onClick={()=>{navigate(-1)}}>Return</button>
+            <button>Send</button>
         </div>
+        </form>
 
         </Application>
         </>

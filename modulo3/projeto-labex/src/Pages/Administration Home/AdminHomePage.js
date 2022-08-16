@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { AdmHomeContainer } from "./style.js"
 
 
 const AdminHomePage = ()=>{
@@ -6,11 +7,14 @@ const AdminHomePage = ()=>{
     const navigate = useNavigate()
 
     return(
-        <>
-        <h1>Administration</h1>
-        <button onClick={()=>{navigate(-1)}}>Return</button>
-        <button onClick={()=>{navigate("/admin/trips/create")}}>Create Trip</button>
-        </>
+        <AdmHomeContainer>
+            <h1>Administration</h1>
+            <div>
+                <button onClick={()=>{navigate(-1)}}>Logout</button>
+                <button onClick={()=>{navigate("/admin/trips/create")}}>Create Trip</button>
+            </div>
+        </AdmHomeContainer>
+        
     )
 }
 
