@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import {TripsListContainer, Trip} from "./style"
+import {TripsListContainer, TripPublic} from "./style"
+
 
 const TripsListPage = ({isLoadingTrips, dataTrips, erorrTrips})=>{
 
@@ -7,13 +8,13 @@ const TripsListPage = ({isLoadingTrips, dataTrips, erorrTrips})=>{
 
     const trips = dataTrips && dataTrips.map((trip)=>{
         return(
-        <Trip key={trip.id}>
+        <TripPublic key={trip.id}>
         <h3>{trip.name}</h3>
         <span>{trip.description}</span>
         <span>Destiny: {trip.planet}</span>
         <span>Durantion in Days: {trip.durationInDays}</span>
         <span>Date: {trip.date}</span>
-        </Trip>
+        </TripPublic>
         )
     })
 

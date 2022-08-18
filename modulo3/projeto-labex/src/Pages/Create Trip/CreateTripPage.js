@@ -3,11 +3,14 @@ import { CreateTripContainer } from "./style"
 import useForm from "../../Hooks/useForm"
 import { baseUrl } from "../../Constants/Constants"
 import axios from "axios"
+import useProtectPage from "../../Hooks/useProtectPage"
 
 
-const CreateTripPage = ()=>{
+const CreateTripPage = ({dataTrips})=>{
 
-    const [setForm, form, onChange] = useForm({name: "", planet: "", date: "", description: "", duration: ""})
+    useProtectPage()
+
+    const [form, onChange, clear] = useForm({name: "", planet: "", date: "", description: "", duration: ""})
 
     const navigate = useNavigate()
 
@@ -23,13 +26,17 @@ const CreateTripPage = ()=>{
 
     const createTrip=(e)=>{
         e.preventDefault()
-        axios.post(url, body)
+        axios.post(url, body, {headers:{
+            auth: localStorage.getItem("token")
+        }
+        })
         .then((response)=>{
-            console.log(response.data)
+            alert("Trip create sucessfull!!")
         })
         .catch((er)=>{
-            console.log(er.response.data.message)
+            alert(er.response.data.message)
         })
+        clear()
     }
 
     return(
@@ -54,7 +61,7 @@ const CreateTripPage = ()=>{
             </select>
 
             <label htmlFor="date">Date:</label>
-            <input name="date" id="date" type="date" value={form.date} onChange={onChange} required/>
+            <input name="date" id="date" type="date" min="2022/08/08" max="9999/12/31" value={form.date} onChange={onChange} required/>
 
             <label htmlFor="description">Description:</label>
             <input name="description" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ' ']{50,5000}$" id="description" type="text" value={form.description} onChange={onChange} required/>

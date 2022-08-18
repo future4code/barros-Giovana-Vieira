@@ -1,8 +1,10 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
-import RoutesPage from "./RoutesPage";
+import RoutesPage from "./Routes/RoutesPage.js";
 import { baseUrl } from "./Constants/Constants.js"
 import useRequestData from "./Hooks/useRequestDataGet.js"
+import space from "../src/Images/space.jpg";
+import { useState } from "react";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -12,9 +14,13 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image: url(${space});
+    color: white;
   }
   button{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    backdrop-filter: blur(1px);
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   }
   option{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -24,12 +30,13 @@ const GlobalStyle = createGlobalStyle`
 function App() {
 
   const [dataTrips, isLoadingTrips, errorTrips] = useRequestData(`${baseUrl}/trips`)
+  const [tripDetails, setTripDetails] = useState({})
 
 
   return (
     <div>
       <GlobalStyle/>
-      <RoutesPage dataTrips={dataTrips} isLoadingTrips={isLoadingTrips} errorTrips={errorTrips}/>
+      <RoutesPage tripDetails={tripDetails} setTripDetails={setTripDetails} dataTrips={dataTrips} isLoadingTrips={isLoadingTrips} errorTrips={errorTrips}/>
     </div>
   );
 }

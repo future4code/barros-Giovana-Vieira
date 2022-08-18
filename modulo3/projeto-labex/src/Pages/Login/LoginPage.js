@@ -9,7 +9,7 @@ const LoginPage = ()=>{
 
     const navigate = useNavigate()
 
-    const[setForm, form, onChange] = useForm({email: "", password: ""})
+    const[form, onChange, clear] = useForm({email: "", password: ""})
 
     const body = {
         "email": form.email,
@@ -20,11 +20,13 @@ const LoginPage = ()=>{
         e.preventDefault()
         axios.post(`${baseUrl}/login`, body)
         .then((response)=>{
+            localStorage.setItem("token", response.data.token)
             navigate("/admin/trips/list")
         })
         .catch((er)=>{
             alert(er.response.data.message)
         })
+        clear()
     }
 
     return(
@@ -37,7 +39,7 @@ const LoginPage = ()=>{
                     <label htmlFor="password">Password:</label>
                     <input onChange={onChange} name="password" value={form.password} id="password" type="password" required/>
                 <div>
-                    <button type="button" onClick={()=>{navigate(-1)}}>Return</button>
+                    <button type="button" onClick={()=>{navigate("/")}}>Return</button>
                     <button>Log In</button>
                 </div>
                 </form>

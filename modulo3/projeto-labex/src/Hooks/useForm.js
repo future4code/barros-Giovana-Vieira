@@ -8,7 +8,11 @@ const useForm=(initialState)=>{
         setForm({...form, [name]: value})
     }
 
-    return[setForm, form, onChange]
+    const clear=()=>{
+        setForm(initialState)
+    }
+
+    return[form, onChange, clear]
 }
 
 

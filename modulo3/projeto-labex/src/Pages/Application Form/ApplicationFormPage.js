@@ -7,7 +7,7 @@ import { baseUrl } from "../../Constants/Constants"
 
 const ApplicationFormPage = ({dataTrips})=>{
 
-    const [setForm, form, onChange] = useForm({trip: "", name: "", age: "", application: "", profession: "", country: ""})
+    const [form, onChange, clear] = useForm({trip: "", name: "", age: "", application: "", profession: "", country: ""})
 
     const navigate = useNavigate()
 
@@ -34,7 +34,7 @@ const ApplicationFormPage = ({dataTrips})=>{
         .catch((er)=>{
             alert(er.response.data.message)
         })
-        /* setForm("") */
+        clear()
     }
 
 
@@ -56,8 +56,8 @@ const ApplicationFormPage = ({dataTrips})=>{
             <label htmlFor="age">Age:<br></br>(You need to have at least 18 years old to apply.)</label>
             <input id="age" min={18} name="age" value={form.age} onChange={onChange} type="number" required/>
 
-            <label htmlFor="application">Applicantion Text:</label>
-            <input id="application" pattern="^.{30,}" name="application" value={form.application} onChange={onChange} type="text" required/>
+            <label htmlFor="application">Applicantion Text:</label>            
+            <input id="application" pattern="^.{30,}" name="application" value={form.application} onChange={onChange} type="text" required/>          
 
             <label htmlFor="profession">Profession:</label>
             <input id="profession" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ' ']{10,100}$" name="profession" value={form.profession} onChange={onChange} type="text" required/>

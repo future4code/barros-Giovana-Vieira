@@ -28,22 +28,26 @@ export const LoginContainer = styled.section`
             height: 2vw;
             margin-top: 1vw;
         }
-        div{        
+        div{ 
             button{
                 white-space: nowrap;
-                border-style: double;
-                background-color: white;
-                margin: 1vw 5vw;
-                width: 10vw;
-                padding: 0.3vw;
+                border: solid 0.3vw white;
+                background-color: transparent;
+                color: white;
+                text-align: center;
+                border-radius: 25%;
+                margin-right: 7vw;
+                margin-left: 7vw;
+                margin-bottom: 1vw;
+                max-width: 10vw;
+                padding:0.6vw;
                 white-space: nowrap;
                 font-size: 1vw;
-    
                 :hover{
                     transform: scale(1.2);
                     transition: all 0.5s;
                 }
-             }
+            }     
         }
     }
 
