@@ -48,6 +48,10 @@ export const TripPublic = styled.li`
 
     span{
         margin: 0.4vw;
+        width: 40vw;
+        overflow-wrap: break-word;  
+        word-wrap: break-word; 
+        word-break: break-word;
     }
 
     h3{

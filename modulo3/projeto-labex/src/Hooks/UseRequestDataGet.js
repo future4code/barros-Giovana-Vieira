@@ -8,6 +8,7 @@ const useRequestData=(url)=>{
     const [data, setData] = useState(undefined)
     const [isLoading, setIsLoading] = useState(undefined)
     const [error, setError] = useState(undefined)
+    const [reload, setReload] = useState(false)
 
     useEffect(()=>{
         setIsLoading(true)
@@ -20,10 +21,9 @@ const useRequestData=(url)=>{
         setIsLoading(false)
         setError(er.response.data.message)
         })
-    },[])
+    },[reload])
 
-
-    return [data, isLoading, error]
+    return [data, isLoading, error, reload, setReload]
 }
 
 export default useRequestData;

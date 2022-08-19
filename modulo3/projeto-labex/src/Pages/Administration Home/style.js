@@ -41,24 +41,21 @@ export const TripPrivate = styled.li`
     display: flex;
     flex-direction: column;
     border: solid 1px;
-    padding: 0.1vw;
     margin: 1vw 0;
     background-color: transparent;
     backdrop-filter: blur(40px);
     font-size: 0.8vw;
     text-align: center;
+    padding: 1vw 8vw;
 
-    span{
-        margin: 0.4vw;
+    h2{
+        margin-top: 0.5vw;
+        margin-bottom: 2vw;
+        font-size: 1.5vw;
+        
     }
 
-    h3{
-        margin-top: 0.2vw;
-        margin-bottom: 0.3vw;
-        font-size: 1.2vw;
-    }
-
-    div{
+    div{ 
         button{
             white-space: nowrap;
             border: solid 0.2vw white;
@@ -66,18 +63,18 @@ export const TripPrivate = styled.li`
             color: white;
             text-align: center;
             border-radius: 25%;
-            margin-right: 7vw;
-            margin-left: 7vw;
+            margin-right: 2vw;
+            margin-left: 2vw;
             margin-bottom: 1vw;
             margin-top: 1vw;
-            max-width: 6vw;
-            padding:0.6vw;
+            max-width: 7vw;
+            padding:0.4vw;
             white-space: nowrap;
             font-size: 0.8vw;
             :hover{
                 transform: scale(1.2);
                 transition: all 0.5s;
             }
-        }       
-    }
+        }
+    }      
 `

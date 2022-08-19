@@ -6,7 +6,7 @@ import axios from "axios"
 import useProtectPage from "../../Hooks/useProtectPage"
 
 
-const CreateTripPage = ({dataTrips})=>{
+const CreateTripPage = ({reload, setReload})=>{
 
     useProtectPage()
 
@@ -32,6 +32,7 @@ const CreateTripPage = ({dataTrips})=>{
         })
         .then((response)=>{
             alert("Trip create sucessfull!!")
+            setReload(!reload)
         })
         .catch((er)=>{
             alert(er.response.data.message)
@@ -64,7 +65,7 @@ const CreateTripPage = ({dataTrips})=>{
             <input name="date" id="date" type="date" min="2022/08/08" max="9999/12/31" value={form.date} onChange={onChange} required/>
 
             <label htmlFor="description">Description:</label>
-            <input name="description" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ' ']{50,5000}$" id="description" type="text" value={form.description} onChange={onChange} required/>
+            <input name="description" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ' '!.,?]{50,5000}$" id="description" type="text" value={form.description} onChange={onChange} required/>
 
             <label htmlFor="duration">Duration in Days:</label>
             <input name="duration" min={50} id="duration" type="number" value={form.duration} onChange={onChange} required/>

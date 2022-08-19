@@ -7,7 +7,7 @@ import AdminHomePage from "../Pages/Administration Home/AdminHomePage"
 import CreateTripPage from "../Pages/Create Trip/CreateTripPage"
 import TripDetailsPage from "../Pages/Trip Details/TripDetailsPage"
 
-const RoutesPage = ({dataTrips, isLoadingTrips, errorTrips, tripDetails, setTripDetails})=>{
+const RoutesPage = ({dataTrips, isLoadingTrips, errorTrips, reload, setReload})=>{
     return(
         <>
             <BrowserRouter>
@@ -16,9 +16,9 @@ const RoutesPage = ({dataTrips, isLoadingTrips, errorTrips, tripDetails, setTrip
                     <Route path="/trips/list" element={<TripsListPage dataTrips={dataTrips} isLoadingTrips={isLoadingTrips} errorTrips={errorTrips}/>}/>
                     <Route path="/trips/application" element={<ApplicationFormPage dataTrips={dataTrips}/>}/>
                     <Route path="/login" element={<LoginPage/>}/>
-                    <Route path="/admin/trips/list" element={ <AdminHomePage dataTrips={dataTrips} isLoadingTrips={isLoadingTrips} errorTrips={errorTrips} tripDetails={tripDetails} setTripDetails={setTripDetails}/> }/>
-                    <Route path="/admin/trips/create" element={<CreateTripPage dataTrips={dataTrips}/>}/>
-                    <Route path="/admin/trips/:id" element={<TripDetailsPage tripDetails={tripDetails}/>}/>
+                    <Route path="/admin/trips/list" element={ <AdminHomePage dataTrips={dataTrips} isLoadingTrips={isLoadingTrips} errorTrips={errorTrips} reload={reload} setReload={setReload}/> }/>
+                    <Route path="/admin/trips/create" element={<CreateTripPage reload={reload} setReload={setReload}/>}/>
+                    <Route path="/admin/trips/:id" element={<TripDetailsPage reload={reload} setReload={setReload}/>}/>
                 </Routes>
             </BrowserRouter>
         </>

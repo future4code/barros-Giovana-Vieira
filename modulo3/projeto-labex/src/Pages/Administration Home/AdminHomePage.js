@@ -4,11 +4,9 @@ import { AdmHomeContainer } from "./style.js"
 import { TripPrivate } from "./style.js"
 import axios from "axios";
 import { baseUrl } from "../../Constants/Constants"
-import { useEffect, useState } from "react";
 
 
-
-const AdminHomePage = ({isLoadingTrips, dataTrips, erorrTrips, tripDetails, setTripDetails})=>{
+const AdminHomePage = ({isLoadingTrips, dataTrips, erorrTrips, reload, setReload})=>{
 
     useProtectPage()
 
@@ -19,46 +17,27 @@ const AdminHomePage = ({isLoadingTrips, dataTrips, erorrTrips, tripDetails, setT
         navigate("/login")
     }
 
-    const getTripDetails=(id)=>{
-
-        axios.get(`${baseUrl}/trip/${id}`, {headers:{
-            auth: localStorage.getItem("token")
-        }
-        })
-        .then((response)=>{            
-            console.log(response.data)
-            setTripDetails(response.data)
-            /* navigate(`/admin/trips/${id}`) */
-        })
-        .catch((er)=>{
-            alert(er.response.data.message)
-        })
-    }
-
-    console.log(tripDetails)
-
-    useEffect(()=>{getTripDetails()}, [])
-
+        
     const deleteTrip=(id)=>{
         axios.delete(`${baseUrl}/trips/${id}`, {headers:{
             auth: localStorage.getItem("token")
         }
         })
         .then((response)=>{
-            console.log(response.data)
+            setReload(!reload)
         })
         .catch((er)=>{
-            console.log(er.response.data.message)
+            alert(er.response.data.message)
         })
     }
 
     const trips = dataTrips && dataTrips.map((trip)=>{
         return(
         <TripPrivate key={trip.id}>
-        <h3>{trip.name}</h3>
+        <h2>{trip.name}</h2>
         <div>
             <button onClick={()=>{deleteTrip(trip.id)}}>Delete Trip</button>
-            <button onClick={()=>{getTripDetails(trip.id)}}>Trip Details</button>
+            <button onClick={()=>{navigate(`/admin/trips/${trip.id}`)}}>Trip Details</button>
         </div>
         </TripPrivate>
         )
