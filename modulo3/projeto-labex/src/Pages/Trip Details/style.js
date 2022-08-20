@@ -23,10 +23,14 @@ export const TripDetails = styled.ul`
     margin: 0.2vw 0;
     background-color: transparent;
     backdrop-filter: blur(40px);
-    font-size: 1vw;
+    font-size: 0.9vw;
     text-align: center;
     list-style: none;
     max-width: 40vw;
+
+    h2{
+        font-size: 1.5vw;
+    }
 
     li{
         margin: 0.5vw 0.7vw;

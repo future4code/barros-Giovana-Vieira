@@ -10,6 +10,17 @@ const CreateTripPage = ({reload, setReload})=>{
 
     useProtectPage()
 
+    const date = new Date("2022-08-22");
+    const year = date.getFullYear();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+  
+    const adaptedMonth=()=>{
+        if(month<10){
+            return `0${month}`
+        }
+    }
+
     const [form, onChange, clear] = useForm({name: "", planet: "", date: "", description: "", duration: ""})
 
     const navigate = useNavigate()
@@ -59,13 +70,13 @@ const CreateTripPage = ({reload, setReload})=>{
                 <option value="Saturn">Saturn</option>
                 <option value="Uranus">Uranus</option>
                 <option value="Jupiter">Jupiter</option>
-            </select>
+            </select>           
 
             <label htmlFor="date">Date:</label>
-            <input name="date" id="date" type="date" min="2022/08/08" max="9999/12/31" value={form.date} onChange={onChange} required/>
+            <input type="date" value={form.date} onChange={onChange} maxLength="10" name="date" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min={`${year}-${adaptedMonth()}-${day}`} max="9999-12-31" required/>
 
             <label htmlFor="description">Description:</label>
-            <input name="description" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ' '!.,?]{50,5000}$" id="description" type="text" value={form.description} onChange={onChange} required/>
+            <input name="description" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ' '!.,?;]{50,5000}$" id="description" type="text" value={form.description} onChange={onChange} required/>
 
             <label htmlFor="duration">Duration in Days:</label>
             <input name="duration" min={50} id="duration" type="number" value={form.duration} onChange={onChange} required/>

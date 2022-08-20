@@ -57,6 +57,6 @@ export const TripPublic = styled.li`
     h3{
         margin-top: 0.2vw;
         margin-bottom: 0.3vw;
-        font-size: 1.2vw;
+        font-size: 1.4vw;
     }
 `

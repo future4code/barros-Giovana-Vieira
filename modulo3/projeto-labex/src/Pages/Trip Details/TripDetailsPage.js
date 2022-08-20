@@ -32,8 +32,6 @@ const TripDetailsPage = ({reload, setReload})=>{
         })
     }
 
-    console.log(tripDetails)
-
     const reprove=(candidate)=>{
         axios.put(`${baseUrl}/trips/${pathParams.id}/candidates/${candidate.id}/decide`, {
             "approve": false
