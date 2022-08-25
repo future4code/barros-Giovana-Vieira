@@ -32,6 +32,7 @@ const ApplicationFormPage = ({dataTrips})=>{
             alert("Successful application!!!")
         })
         .catch((er)=>{
+            console.log(er.response.data)
             alert(er.response.data.message)
         })
         clear()
@@ -46,7 +47,6 @@ const ApplicationFormPage = ({dataTrips})=>{
         <form onSubmit={applyToTrip}>
             <label htmlFor="trip">Choose a Trip:</label>
             <select id="trip" name="trip" value={form.trip} onChange={onChange} required>
-                <option>Choose a Trip</option>
                 {tripsOptions}
             </select>
 
@@ -64,7 +64,6 @@ const ApplicationFormPage = ({dataTrips})=>{
 
             <label htmlFor="country">Choose a Country:</label>    
             <select id="country" name="country" value={form.country} onChange={onChange} required>
-                <option>Choose a Country</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Aland Islands">Aland Islands</option>
                 <option value="Albania">Albania</option>

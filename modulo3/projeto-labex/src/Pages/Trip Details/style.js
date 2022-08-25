@@ -46,13 +46,14 @@ export const ListOfCandidates = styled.ul`
     margin: 0.6vw 0;
     background-color: transparent;
     backdrop-filter: blur(40px);
-    font-size: 1vw;
+    font-size: 0.9vw;
     text-align: center;
     list-style: none;
     max-width: 40vw;
 
     h3{
         margin: 0.2vw 0;
+        font-size: 1.4vw;
     }
 
     p{
@@ -90,8 +91,7 @@ export const ListOfCandidates = styled.ul`
 export const Candidate = styled.li`
     display: flex;
     flex-direction: column;
-    margin: 1vw;
-
+    margin: 0.7vw;
 `
 
 export const ApprovedCandidates = styled.div`

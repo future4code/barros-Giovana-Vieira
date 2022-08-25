@@ -1,7 +1,7 @@
 import React from "react";
 import RoutesPage from "./Routes/RoutesPage.js";
 import { baseUrl } from "./Constants/Constants.js"
-import useRequestData from "./Hooks/useRequestDataGet.js"
+import useRequestData from "./Hooks/useRequestData.js"
 import { GlobalStyle } from "./GlobalStyle.js";
 
 

@@ -110,7 +110,6 @@ const TripDetailsPage = ({reload, setReload})=>{
                 {approvedCandidates}     
             </ApprovedContainer>
 
-
             <CandidatesContainer>
                 <h1>List of Candidates</h1>
 
@@ -119,8 +118,7 @@ const TripDetailsPage = ({reload, setReload})=>{
             <ButtonReturn>
                 <button onClick={()=>{navigate(-1)}}>Return</button>
             </ButtonReturn>
-        </TripDetailsPageContainer>
-        
+        </TripDetailsPageContainer>        
     )
 }
 

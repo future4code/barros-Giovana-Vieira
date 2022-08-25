@@ -10,9 +10,9 @@ const CreateTripPage = ({reload, setReload})=>{
 
     useProtectPage()
 
-    const date = new Date("2022-08-22");
+    const date = new Date();
     const year = date.getFullYear();
-    const day = date.getDate();
+    const day = date.getDate() + 1;
     const month = date.getMonth() + 1;
   
     const adaptedMonth=()=>{
@@ -61,7 +61,6 @@ const CreateTripPage = ({reload, setReload})=>{
 
             <label htmlFor="planet">Choose a Planet:</label>
             <select name="planet" id="planet" value={form.planet} onChange={onChange} required>
-                <option>Choose a Planet</option>
                 <option value="Neptune">Neptune</option>
                 <option value="Mercury">Mercury</option>
                 <option value="Venus">Venus</option>

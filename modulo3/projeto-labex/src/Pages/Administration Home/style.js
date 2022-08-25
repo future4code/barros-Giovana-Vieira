@@ -33,7 +33,6 @@ export const AdmHomeContainer = styled.section`
                 transition: all 0.5s;
             }
         }       
-
     }
 `
 

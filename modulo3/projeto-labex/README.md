@@ -1,4 +1,4 @@
-LINK SURGE: odd-lamp.surge.sh
+LINK SURGE: https://redundant-mint.surge.sh/
 
 
 
