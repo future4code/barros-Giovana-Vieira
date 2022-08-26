@@ -36,8 +36,8 @@ const AdminHomePage = ({isLoadingTrips, dataTrips, erorrTrips, reload, setReload
         <TripPrivate key={trip.id}>
         <h2>{trip.name}</h2>
         <div>
-            <button onClick={()=>{deleteTrip(trip.id)}}>Delete Trip</button>
             <button onClick={()=>{navigate(`/admin/trips/${trip.id}`)}}>Trip Details</button>
+            <button onClick={()=>{deleteTrip(trip.id)}}>Delete Trip</button>
         </div>
         </TripPrivate>
         )
@@ -50,16 +50,18 @@ const AdminHomePage = ({isLoadingTrips, dataTrips, erorrTrips, reload, setReload
 
             {isLoadingTrips && "...Carregando"}
 
-            <ul>
-                {!isLoadingTrips&&dataTrips&&trips}     
-            </ul>
+            <article>
+                <ul>
+                    {!isLoadingTrips&&dataTrips&&trips}     
+                </ul>
 
-            {!isLoadingTrips&&!dataTrips&&erorrTrips}
+                {!isLoadingTrips&&!dataTrips&&erorrTrips}
 
-            <div>
-                <button onClick={logOut}>Logout</button>
-                <button onClick={()=>{navigate("/admin/trips/create")}}>Create Trip</button>
-            </div>
+                <div>
+                    <button onClick={()=>{navigate("/admin/trips/create")}}>Create Trip</button>
+                    <button onClick={logOut}>Logout</button>
+                </div>
+            </article>
         </AdmHomeContainer>        
     )
 }

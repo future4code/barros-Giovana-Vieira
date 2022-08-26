@@ -22,7 +22,7 @@ const TripsListPage = ({isLoadingTrips, dataTrips, erorrTrips})=>{
 
         <TripsListContainer>
             
-
+            <div>
                 <h1>Trips List</h1>
 
                 {isLoadingTrips && "...Carregando"}
@@ -30,13 +30,14 @@ const TripsListPage = ({isLoadingTrips, dataTrips, erorrTrips})=>{
                 <ul>
                     {!isLoadingTrips&&dataTrips&&trips}     
                 </ul>
+            </div>
 
                 {!isLoadingTrips&&!dataTrips&&erorrTrips}
 
-                <div>
-                    <button onClick={()=>{navigate(-1)}}>Return</button>
+                <article>
                     <button onClick={()=>{navigate("/trips/application")}}>Applicantion Form</button>
-                </div>
+                    <button onClick={()=>{navigate(-1)}}>Return</button>
+                </article>
        
 
         </TripsListContainer>

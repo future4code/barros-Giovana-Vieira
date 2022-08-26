@@ -34,6 +34,10 @@ export const TripDetails = styled.ul`
 
     li{
         margin: 0.5vw 0.7vw;
+        width: 30vw;
+        overflow-wrap: break-word;  
+        word-wrap: break-word; 
+        word-break: break-word;
     }
 `
 

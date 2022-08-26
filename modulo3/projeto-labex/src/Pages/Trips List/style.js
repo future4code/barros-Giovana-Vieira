@@ -1,11 +1,22 @@
 import styled from "styled-components"
 
 export const TripsListContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    article{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
     h1{
         margin-top: 2vw;
@@ -23,16 +34,15 @@ export const TripsListContainer = styled.div`
         margin-right: 7vw;
         margin-left: 7vw;
         margin-bottom: 1vw;
-        margin-top: 1vw;
-        max-width: 10vw;
+        margin-top: 8vw;
         padding:0.6vw;
         white-space: nowrap;
-        font-size: 1vw;
+        font-size: 1.5vw;
         :hover{
-            transform: scale(1.2);
-            transition: all 0.5s;
+                transform: scale(1.2);
+                transition: all 0.5s;
         }
-    }     
+    }           
 `
 
 export const TripPublic = styled.li`

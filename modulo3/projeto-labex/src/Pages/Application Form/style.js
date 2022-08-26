@@ -22,6 +22,8 @@ export const Application = styled.section`
 
         select{
             margin: 1vw 0;
+            min-width: 15vw;
+            max-width: 40vw;
         }
 
         input {
