@@ -6,11 +6,11 @@ const convertCelsius = (celsius, fahrenheitOrKelvin) => {
     const celsiusToKelvin = celsius + 273.15
 
     if ((typeof celsius !==  "number") && (fahrenheitOrKelvin !== "F" && fahrenheitOrKelvin !== "K")){
-        return `Erro. Parâmetro inválido ("celsius" e "fahrenheitOrKelvin").`
+        return `Erro. Parâmetro inválido (${celsius} e ${fahrenheitOrKelvin}).`
     } if(typeof celsius !==  "number"){
-        return `Erro. Parâmetro inválido ("celsius").`
+        return `Erro. Parâmetro inválido (${celsius}).`
     } if (fahrenheitOrKelvin !== "F" && fahrenheitOrKelvin !== "K"){
-        return `Erro. Parâmetro inválido ("fahrenheitOrKelvin").`
+        return `Erro. Parâmetro inválido (${fahrenheitOrKelvin}).`
     } else if (typeof celsius ===  "number" && fahrenheitOrKelvin === "F"){
         return `${celsius}° Celsius é equivalente a ${celsiusToFahrenheit}° Farenheit.`         
     } if (typeof celsius ===  "number" && fahrenheitOrKelvin === "K"){
@@ -18,4 +18,4 @@ const convertCelsius = (celsius, fahrenheitOrKelvin) => {
     }
 }
 
-console.log(convertCelsius(70, "F"))
+console.log(convertCelsius(70, "K"))
