@@ -1,0 +1,14 @@
+{
+  "name": "exercise3",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "exercise.js",
+  "scripts": {
+    "start": "node ./exercise.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
