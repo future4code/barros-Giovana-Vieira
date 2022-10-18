@@ -1,0 +1,27 @@
+{
+  "name": "intro-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "exercise1": "tsc && node ./build/exercise1.js",
+    "exercise2": "tsc && node ./build/exercise2.js",
+    "exercise3": "tsc && node ./build/exercise3.js",
+    "exercise4": "tsc && node ./build/exercise4.js",
+    "exercise5": "tsc && node ./build/exercise5.js",
+    "exercise6": "tsc && node ./build/exercise6.js",
+    "exercise7": "tsc && node ./build/exercise7.js",
+    "exercise8": "tsc && node ./build/exercise8.js",
+    "exercise9": "tsc && node ./build/exercise9.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.8.5",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
