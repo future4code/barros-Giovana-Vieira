@@ -1,8 +1,97 @@
-/* Não é segredo para ninguém que as lojas tendem a lucrar bastante próximo ao período natalino. O faturamento delas é o principal indicativo disto. 
-Normalmente, em documentos contáveis, representa-se um valor negativo com a cor vermelha; e um valor positivo com a cor preta. 
-Esta é a razão pela qual a sexta-feira depois da Ação de Graças é chamada de **Black Friday**, indicando que as empresas tendem a ter um faturamento muito alto. 
-Neste exercício, você vai implementar uma funcionalidade importante de uma loja de roupas o valor final do produto durante a black friday. 
-Para isto, ela classifica as roupas em: de verão, de inverno, para banho e íntimas. 
-Cada uma tem a sua própria porcentagem de desconto: 5% (verão), 10% (inverno), 4% (banho) e 7% (íntimas). 
+type Products = {
+    name: string,
+    price: number,
+    classification: Classifications,
+    discountPrice?: number
+}
 
-a) Escreva uma função que receba um array de produtos com nome, preço e classificação; e retorne um array com essas informações e um campo mais: "preço com desconto" */
+enum Classifications {
+    SUMMER= "Summer",
+    WINTER= "Winter",
+    BATH= "Bath",
+    UNDERWEAR= "Underwear"
+}
+
+enum Discounts {
+    DISCOUNTSUMMER= 5, 
+    DISCOUNTWINTER= 10,
+    DISCOUNTBATH= 4,
+    DISCOUNTUNDERWEAR= 7
+}
+
+const arrayOfProducts: Products[] = [
+    {
+        name: "Shirt",
+        price: 40,
+        classification: Classifications.SUMMER        
+    },
+    {
+        name: "Sweatshirt",
+        price: 80,
+        classification: Classifications.WINTER         
+    },
+    {
+        name: "Panty",
+        price: 15,
+        classification: Classifications.UNDERWEAR             
+    },
+    {
+        name: "Towel",
+        price: 28.50,
+        classification: Classifications.BATH               
+    },
+    {
+        name: "Pants",
+        price: 100,
+        classification: Classifications.SUMMER
+    }
+]
+
+
+const arrayWithDiscount = (array: Products[]): Products[] => {
+    
+    let newArray: Products[] = []
+
+    for(let product of array){
+
+    let discountSummer = product.price - ((product.price * Discounts.DISCOUNTSUMMER) / 100)
+    let discountWinter = product.price - ((product.price * Discounts.DISCOUNTWINTER) / 100)
+    let discountBath = product.price - ((product.price * Discounts.DISCOUNTBATH) / 100)
+    let discountUnderwear = product.price - ((product.price * Discounts.DISCOUNTUNDERWEAR) / 100)
+    
+    if(product.classification === Classifications.SUMMER){
+        newArray.push({
+        name: product.name,
+        price: product.price,
+        classification: Classifications.SUMMER,
+        discountPrice: discountSummer
+    })
+    } else if(product.classification === Classifications.WINTER){
+        newArray.push({
+        name: product.name,
+        price: product.price,
+        classification: Classifications.WINTER,
+        discountPrice: discountWinter
+    })
+    } else if(product.classification === Classifications.UNDERWEAR){
+        newArray.push({
+        name: product.name,
+        price: product.price,
+        classification: Classifications.UNDERWEAR,
+        discountPrice: discountUnderwear
+    })
+    } else if(product.classification === Classifications.BATH){
+        newArray.push({
+        name: product.name,
+        price: product.price,
+        classification: Classifications.BATH,
+        discountPrice: discountBath
+    })
+    }
+}
+
+    return newArray
+
+}
+
+console.log(arrayWithDiscount(arrayOfProducts))
