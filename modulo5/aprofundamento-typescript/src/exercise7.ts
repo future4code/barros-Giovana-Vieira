@@ -9,6 +9,8 @@ c) Escreva uma função para que ele venda um prato. Salve as vendas em um array
 
 d) Escreva uma função que determine o lucro do restaurante. */
 
+import { format } from "path"
+
 type Dishs = {
     dishName: string,
     cost: number,
@@ -31,7 +33,7 @@ let products: Dishs[] = [
     {
         dishName: "Macarrão alho e óleo",
         cost: 30,
-        price: 45,
+        price: 50,
         ingredientes: ['Macarrão', 'Alho', 'Azeite', 'Pimenta']
     }
 ]
@@ -81,7 +83,11 @@ let sales: Sales[] = [
     {
         dishName: "Macarrão alho e óleo",
         clientName: "Júlia"
-    }
+    },
+    {
+        dishName: "Pudim",
+        clientName: "Renata"
+    },
 ]
 
 const addSales = () => {
@@ -99,21 +105,25 @@ console.log(sales) */
 
 // d)
 
-const profit = (): void => {
+const profit = (): number => {
 
-    let sale;
-    let product;
-    let restaurantProfit;
+    let restaurantProfit: number;
+    let profits: number[] = []
 
-    for(sale of sales){
-        for(product of products){
-            if(product.dishName === sale.dishName){
+    for(let saleName of sales){
+        for(let product of products){
+            if(saleName.dishName === product.dishName){
                 restaurantProfit = product.price - product.cost
-            } 
+                profits.push(restaurantProfit)
+            }
         }
     }
 
-    console.log(restaurantProfit)
+    let totalProfit = profits.reduce((soma, i)=>{
+        return soma + i
+    })
+    
+    return totalProfit
 }
 
-profit()
+console.log(profit())
