@@ -31,13 +31,20 @@ const adjustPrice = (price: number): string => {
 	return `R$${adjustedPrice}`
 }
 
-const inventoryAdjusted = (arr: Iten[]) => {
-    
-    let inventorySort = arr.sort((a, b) => {        
-        return a.quantity > b.quantity ? 1 : -1 
-    })
+const inventoryAdjusted = (arr: Iten[]): ItenUpdated[] => {
+  
+   let inventory: ItenUpdated[] = []
 
-    return inventorySort
+   for(let i = 0; i < arr.length; i++){
+    inventory.push({name: arr[i].name, quantity: arr[i].quantity, unitValue: adjustPrice(arr[i].unitValue)})
+   }
+
+   let inventorySort = inventory.sort((a, b)=>{
+    return a.quantity > b.quantity ? 1 : -1 
+   })
+
+   return inventorySort
+    
 }
 
 console.log(inventoryAdjusted(inventory))
