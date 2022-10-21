@@ -2,7 +2,7 @@ const wordFactorial = (word: string): number => {
 
     let length: number = word.length
     
-    if(length === 1 || length ===0){
+    if(length === 1 || length === 0){
         return 1
     }
 
