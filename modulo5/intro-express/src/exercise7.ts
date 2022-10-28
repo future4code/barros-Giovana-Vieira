@@ -10,13 +10,11 @@ app.use(cors())
 
 app.get("/posts", (req: Request, res: Response)=>{
 
-    let allPosts = posts.map((post)=>{
-        return post
-    })
+    let allPosts = posts.map((post)=> post)
 
     res.status(200).send(allPosts)
 })
 
 app.listen('3003',()=>{
-    console.log("Servidor rodando na porta 3003.")
+    console.log("Exercício 7 - Servidor rodando na porta 3003.")
 })

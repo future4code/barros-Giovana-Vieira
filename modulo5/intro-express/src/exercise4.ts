@@ -10,13 +10,11 @@ app.use(cors())
 
 app.get("/users",(req: Request, res: Response)=>{
 
-    let allUsers = users.map((user)=>{
-        return user
-    })
+    let allUsers = users.map((user)=> user)
 
     res.status(200).send(allUsers)
 })
 
 app.listen('3003',()=>{
-    console.log("Servidor rodando na porta 3003.")
+    console.log("Exercício 4 - Servidor rodando na porta 3003.")
 })

@@ -12,6 +12,6 @@ app.get("/",(req: Request, res: Response)=>{
 })
 
 app.listen('3003',()=>{
-    console.log("Servidor rodando na porta 3003.")
+    console.log("Exercício 1 - Servidor rodando na porta 3003.")
 })
 
