@@ -1,0 +1,1 @@
+/* Construa um endpoint que deleta um determinado produto e retorna a lista de produtos atualizada. */

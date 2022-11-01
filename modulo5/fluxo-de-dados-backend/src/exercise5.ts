@@ -1,0 +1,1 @@
+/* Crie um endpoint que retorna todos os produtos. */
