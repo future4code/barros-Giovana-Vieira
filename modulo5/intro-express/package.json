@@ -1,0 +1,31 @@
+{
+  "name": "intro-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "e1": "tsc && node ./build/exercise1.js",
+    "e2": "tsc && node ./build/exercise2.js",
+    "e3": "tsc && node ./build/exercise3.js",
+    "e4": "tsc && node ./build/exercise4.js",
+    "e5": "tsc && node ./build/exercise5.js",
+    "e6": "tsc && node ./build/exercise6.js",
+    "e7": "tsc && node ./build/exercise7.js",
+    "e8": "tsc && node ./build/exercise8.js",
+    "e9": "tsc && node ./build/exercise9.js",
+    "e10": "tsc && node ./build/exercise10.js",
+    "e11": "tsc && node ./build/exercise11.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
