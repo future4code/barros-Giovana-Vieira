@@ -121,6 +121,110 @@ app.post('/users/add/user',(req: Request, res: Response)=>{
     }
 })
 
+// Exercício 5
+
+ app.put('/users/edit/username', (req: Request, res: Response)=>{
+
+    const {newName} = req.body
+    const lastUser = users[users.length -1] 
+    const currentName = users[users.length -1].name
+
+    let errorCode = 400
+
+    try {
+
+        if(!newName){
+            errorCode = 404
+            throw new Error("É necessário informar o novo nome que você deseja que o usuário possua.")            
+        }
+
+        for(let i = 0; i < users.length; i++){
+            if(lastUser.id === users[i].id){
+                users[i].name = newName
+            }
+        }
+
+        if(users[users.length -1].name === currentName){
+            errorCode = 400
+            throw new Error("Este nome já é o atual.")
+        }
+
+        if(users[users.length -1].name !== currentName){
+            res.status(200).send("Nome alterado com sucesso!")
+        }
+
+    }catch(e: any){
+        res.status(errorCode).send(e.message)
+    }
+ })
+
 app.listen(3003, ()=>{
     console.log('Server is running on port 3003.')
+})
+
+// Exercício 6
+
+ app.patch('/users/reedit/username', (req: Request, res: Response)=>{
+
+    const {newName} = req.body
+    const lastUser = users[users.length -1] 
+    const currentName = users[users.length -1].name
+
+    let errorCode = 400
+
+    try {
+
+        if(!newName){
+            errorCode = 404
+            throw new Error("É necessário informar o novo nome que você deseja para realterá-lo.")            
+        }
+
+        for(let i = 0; i < users.length; i++){
+            if(lastUser.id === users[i].id){
+                users[i].name = newName
+            }
+        }
+
+        if(users[users.length -1].name === currentName){
+            errorCode = 400
+            throw new Error("Este nome já é o atual.")
+        }
+
+        if(users[users.length -1].name !== currentName){
+            res.status(200).send("Nome realterado com sucesso!")
+        }
+
+    }catch(e: any){
+        res.status(errorCode).send(e.message)
+    }
+ })
+
+// Exercício 7
+
+app.delete('/users/delete/:id', (req: Request, res: Response)=>{
+
+    const userId = Number(req.params.id)
+    let errorCode = 400
+       
+    try{
+        
+        const idExisting = users.find(user => user.id === userId)
+
+        if(!userId){
+            errorCode = 404
+            throw new Error("É obrigatório informar o id do usuário que você deseja excluir.")            
+        } if(!idExisting){
+            errorCode = 404
+            throw new Error("Usuário não encontrado!")            
+        } 
+
+        const indexUser = users.indexOf(idExisting)
+
+        users.splice(indexUser, 1)
+               
+        res.status(200).send(users)
+
+    }catch(e: any){
+        res.status(errorCode).send(e.message)
+    }
 })
