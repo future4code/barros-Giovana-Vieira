@@ -40,13 +40,11 @@ app.get('/artists', async (req: Request, res: Response): Promise<void> =>{
   
         res.status(200).send(result)
 
-    }catch(er: any){
-        res.status(statusCode).send(er.message)
+    }catch(err: any){
+        res.status(statusCode).send(err.message)
     }
 
 })
-
-// Faça uma função que receba um gender retorne a quantidade de itens na tabela Actor com esse gender. Para atrizes, female e para atores male.
 
 app.get('/artists/gender', async (req: Request, res: Response): Promise<void>=>{
     
@@ -68,11 +66,46 @@ app.get('/artists/gender', async (req: Request, res: Response): Promise<void>=>{
 
         res.status(200).send(`${result[0].count}`)
     
-    }catch(er: any){
-        res.status(statusCode).send(er.message)
+    }catch(err: any){
+        res.status(statusCode).send(err.message)
     }
 
 })
+
+// Uma função que receba um salário e um id e realiza a atualização do salário do ator em questão
+
+app.patch('/artists/set/:id', async (req: Request, res: Response): Promise<void>=>{
+
+    let id = req.params.id
+    let salary = Number(req.body.salary)
+    let allArtists;
+    let statusCode = 400
+
+    try{
+        allArtists = await connection("Artists").select('*')
+
+        const artistExisting = allArtists.filter(artist => artist.id === id)
+
+        if(!salary){
+            statusCode = 422
+            throw new Error("É obrigatório informar o salário.")
+        } if(artistExisting.length < 1){
+            statusCode = 422
+            throw new Error('Este ID de usuário não foi encontrado.')
+        }
+        
+        await connection("Artists").where('id', `${id}`).update('salary', `${salary}`)
+
+        const updateArtist = allArtists.find(artist => artist.id === id)
+
+        res.status(200).send(updateArtist)
+
+    }catch(err: any){
+        res.status(statusCode).send(err.message)
+    }
+
+})
+
 
 app.listen(3003,()=>{
     console.log('Server running in port 3003.')
