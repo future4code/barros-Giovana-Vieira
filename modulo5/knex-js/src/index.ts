@@ -8,11 +8,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-enum DirectorOrNotDirector {
-    DIRECTOR= "Director",
-    NOTDIRECTOR= "NotDirector"
-}
-
 app.get('/artists', async (req: Request, res: Response): Promise<void> =>{
 
     let artistName = req.query.artist as string
@@ -48,7 +43,6 @@ app.get('/artists', async (req: Request, res: Response): Promise<void> =>{
     }catch(err: any){
         res.status(statusCode).send(err.message)
     }
-
 })
 
 app.get('/artists/gender', async (req: Request, res: Response): Promise<void>=>{
@@ -74,7 +68,6 @@ app.get('/artists/gender', async (req: Request, res: Response): Promise<void>=>{
     }catch(err: any){
         res.status(statusCode).send(err.message)
     }
-
 })
 
 app.patch('/artists/set/:id', async (req: Request, res: Response): Promise<void>=>{
@@ -164,21 +157,34 @@ app.get('/artists/salary_avg', async (req: Request, res: Response)=>{
     }
 })
 
-app.post('/artists/new_artist', async (req: Request, res: Response)=>{
-
-    let {id, name, birthDate, gender, favoriteFlavorOfIceCream, type, salary} = req.body    
-    let statusCode = 400
-
-    try {
-        await connection('Artists').insert({
+const createArtist = async (id: string, name: string, birthDate: Date, gender: string, favoriteFlavorOfIceCream: string, type: string, salary: number) =>{
+    await connection("Artists").insert(
+        {
             id, 
             name, 
-            birth_date: `${birthDate}`, 
+            birth_date: birthDate, 
             gender, 
             favorite_ice_cream_flavor: favoriteFlavorOfIceCream, 
             type, 
             salary
-        })
+        }
+    )
+} 
+
+app.post('/artists/new_artist', async (req: Request, res: Response)=>{
+    
+    let statusCode = 400
+
+    try {
+        await createArtist(
+            req.body.id,
+            req.body.name,
+            req.body.birthDate,
+            req.body.gender,
+            req.body.favoriteFlavorOfIceCream,
+            req.body.type,
+            req.body.salary
+        )
         
         const allArtists = await connection("Artists").select("*")
 
@@ -189,7 +195,96 @@ app.post('/artists/new_artist', async (req: Request, res: Response)=>{
     }
 })
 
+const createMovie = async (nome: string, sinopse: string, dataDeLancamento: Date, avaliacao: number, playingLimitDate: Date) => {
+    await connection("Movies").insert({
+        nome,
+        sinopse,
+        data_de_lançamento: dataDeLancamento,
+        avaliação: avaliacao,
+        playing_limit_date: playingLimitDate,
+      })
+}
+
+app.post('/movies', async(req: Request, res: Response): Promise<void> =>{
+    
+    let statusCode = 400
+
+    try {
+        await createMovie(
+            req.body.nome, 
+            req.body.sinopse,
+            req.body.dataDeLancamento,
+            req.body.avaliacao,
+            req.body.playingLimitDate
+        )
+
+        const movies = await connection("Movies").select("*")
+
+        res.status(200).send(movies)
+        
+    } catch (err: any) {
+        res.status(statusCode).send(err.message)
+    }
+})
+
+
+app.delete('/movies/delete/:id', async (req: Request, res: Response): Promise<void> =>{
+    
+    const id = req.params.id
+    let statusCode = 400
+
+    try {
+
+        if(id === ":id"){
+            statusCode = 422
+            throw new Error("É obrigatório informar o ID.")            
+        }
+
+        await connection("Movies").where("id", id).del()
+
+        const movies = await connection("Movies").select("*")
+
+        res.status(200).send(movies)     
+
+    } catch (err: any) {
+        res.status(statusCode).send(err.message)
+    }
+    
+})
+
+app.get('/movies/all', async (req: Request, res: Response): Promise<void> =>{
+    
+    let statusCode = 400
+
+    try {
+        const movies = await connection("Movies").select("*").limit(15)
+
+        res.status(200).send(movies)
+        
+    } catch (err: any) {
+        res.status(statusCode).send(err.message)
+    }
+})
+
+app.get('/movies/search', async (req: Request, res: Response): Promise<void>=>{
+
+    const search = req.query.search
+    let statusCode = 400
+
+    try {
+
+        const result = await connection("Movies").select("*").whereLike("nome", `%${search}%`).orWhereLike("sinopse", `%${search}%`).orderBy("data_de_lançamento")
+
+        res.status(statusCode).send(result)
+
+    } catch (err: any) {
+        res.status(statusCode).send(err.message)
+    }
+})
+
 app.listen(3003,()=>{
     console.log('Server running in port 3003.')
 })
+
+
 
