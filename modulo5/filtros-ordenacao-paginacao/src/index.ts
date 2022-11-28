@@ -105,22 +105,39 @@ app.get('/users/all', async (req: Request, res: Response): Promise<void> =>{
     
     let searchName = req.query.searchName as string
     let searchType = req.query.searchType as string
-    let ordenacao = req.query.ordenacao as string
+    let ordinationBy = req.query.ordinationBy as string
+    let chooseOrder = req.query.chooseOrder as string
     let page = Number(req.query.page)
-    let allUsers;
+    let nameSearch = '%'
+    let typeSearch = '%'
+    let orderBy = 'name'
+    let order = 'desc'
+    let offset = 0
     let errorCode = 400
 
-    try {
+    try {   
 
-        allUsers = await connection("aula48_exercicio").select("*").orderBy("name", "DESC").limit(5).offset(0)
-
-        if(searchName && !ordenacao && !page && !searchType){
-            allUsers = await connection("aula48_exercicio").select("*").whereLike("name", `%${searchName}%`).orderBy("name", "DESC").limit(5).offset(0)
-        } if(searchType && !ordenacao && !page && !searchType){
-            allUsers = await connection("aula48_exercicio").select("*").whereLike("type", `%${searchType}%`).orderBy("name", "DESC").limit(5).offset(0)
-        } if(searchName && searchType && ordenacao){
-            allUsers = await connection("aula48_exercicio").select("*").whereLike("type", `%${searchType}%`).andWhereLike("name", `%${searchName}%`).orderBy(ordenacao, "DESC").limit(5).offset(0)
+        if(searchName){
+            nameSearch = searchName
+        } if(searchType){
+            typeSearch = searchType
+        } if(ordinationBy){
+            orderBy = ordinationBy
+        } if(chooseOrder){
+            order = chooseOrder
+        } if(page){
+            offset = 5 * (page - 1)
         }
+
+        const allUsers = await connection("aula48_exercicio")
+        .select("*")
+        .whereLike('name', `%${nameSearch}%`)
+        .andWhereLike('type', `%${typeSearch}%`)
+        .limit(5)
+        .offset(offset)
+        .orderBy(orderBy, order)
+        
+        res.status(200).send(allUsers)
         
     } catch (err: any) {
         res.status(errorCode).send(err.message)
@@ -129,4 +146,4 @@ app.get('/users/all', async (req: Request, res: Response): Promise<void> =>{
 
 app.listen(3003, ()=>{
     console.log('Server running at port 3003.')
-}) 
+})
