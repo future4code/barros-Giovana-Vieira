@@ -1,7 +1,9 @@
-GET http://localhost:3003/address
+POST http://localhost:3003/address
 Content-Type: application/json
 
 {
-    "cep": "37950000"
+    "cep": "37980000",
+    "numero": 120,
+    "complemento": "Não tem."
 }
 
