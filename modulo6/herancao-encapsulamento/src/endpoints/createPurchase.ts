@@ -3,6 +3,7 @@ import { Product } from "../classes/Product"
 import { PurchaseDB } from "../classes/PurchaseDB"
 import { BaseDatabase } from "../database/BaseDatabase"
 import { TABLE_USERS, TABLE_PRODUCTS, TABLE_PURCHASES } from "../database/tableNames"
+import { PurchaseDatabase } from "../classes/PurchaseDatabase"
 
 export const createPurchase = async (req: Request, res: Response) => {
     let errorCode = 400
@@ -18,7 +19,8 @@ export const createPurchase = async (req: Request, res: Response) => {
         const findUser = await BaseDatabase.connection(TABLE_USERS)
         .select()
         .where({ id: userId })
-        
+
+        console.log(findUser)        
 
         if (findUser.length === 0) {
             errorCode = 404
@@ -62,13 +64,9 @@ export const createPurchase = async (req: Request, res: Response) => {
             product.getPrice() * quantity
         )
 
-        await BaseDatabase.connection(TABLE_PURCHASES).insert({
-            id: purchase.getId(),
-            user_id: purchase.getUserId(),
-            product_id: purchase.getProductId(),
-            quantity: purchase.getQuantity(),
-            total_price: purchase.getTotalPrice()
-        })
+        const purchaseDB = new PurchaseDatabase(BaseDatabase.connection)
+
+        purchaseDB.createPurchase(purchase)
 
         res.status(201).send({ message: "Compra registrada", purchase: purchase })
     } catch (error) {

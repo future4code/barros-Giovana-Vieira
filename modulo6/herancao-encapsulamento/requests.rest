@@ -32,7 +32,7 @@ Content-Type: application/json
 {
     "userId": "103",
     "productId": "203",
-    "quantity": 1
+    "quantity": 6
 }
 
 ### Exercício 6 - Get user purchases
