@@ -25,6 +25,31 @@ export class UserBusiness {
         }catch(err: any){
             throw new Error(err.message)            
         }
+    }
+
+    getAllUsers = async () =>{
+        try{
+            const userDatabase = new UserDatabase()
+    
+            return await userDatabase.getAllUsers()
+        }catch(err: any){
+            throw new Error(err.message)            
+        }
+
+    }
+
+    deleteUser = async (userId: string) =>{
+        try{
+            if(!userId){
+                throw new Error("User id required.")                
+            }
+
+            const userDatabase = new UserDatabase()
+    
+            await userDatabase.deleteUser(userId)
+        }catch(err: any){
+            throw new Error(err.message)            
+        }
 
     }
 }
