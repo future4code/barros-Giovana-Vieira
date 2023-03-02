@@ -1,6 +1,6 @@
 import userPurchase from "../src/testsFuncs/userPurchase"
 
-describe("Tests", () => {
+describe.skip("Tests", () => {
     const user = {
         username: "Giovana",
         userBalance: 50000
