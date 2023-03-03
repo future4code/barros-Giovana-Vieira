@@ -43,35 +43,41 @@ describe("tests", () => {
     test("Test 1", () => {
 
     expect(allowToEntry(casinoEua, users)).toEqual([
-        [
-            {
-                name: 'Guilherme', 
-                nationality: 'AMERICAN', 
-                age: 32 
-            },
-            { 
-                name: 'Caio', 
-                nationality: 'AMERICAN', 
-                age: 15 
-            },
-            { 
-                name: 'Fábio', 
-                nationality: 'AMERICAN', 
-                age: 12 },
-            { 
-                allowedAmericans: 
-                [
-                    "Guilherme"
-                ] 
-            },
-            { 
-                notAllowedAmericans: 
-                [
-                    "Caio", 
-                    "Fábio"
-                ] 
-            }
-        ]
+        { 
+            allowedInEua:
+            [
+                {
+                    name: "Giovana",
+                    nationality: 'BRAZILIAN',
+                    age: 23
+                },
+                {
+                    name: 'Guilherme', 
+                    nationality: 'AMERICAN', 
+                    age: 32 
+                }
+            ] 
+        },
+        { 
+            unallowedInEua: 
+            [
+                {
+                    name: "Rafael",
+                    nationality: 'BRAZILIAN',
+                    age: 17
+                },
+                { 
+                    name: 'Caio', 
+                    nationality: 'AMERICAN', 
+                    age: 15 
+                },
+                { 
+                    name: 'Fábio', 
+                    nationality: 'AMERICAN', 
+                    age: 12 
+                }             
+            ] 
+        }
     ])  
     })
 })
