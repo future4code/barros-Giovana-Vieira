@@ -5,6 +5,7 @@ const allowToEntry = (casino: Casino, listOfUsers: User[]) => {
     let unallowedInBrazil: any[] = []
     let allowedInEua: any[] = []
     let unallowedInEua: any[] = []
+    let result: any[] = []
 
     for(let user of listOfUsers){
         if(user.age >= 18){
@@ -19,18 +20,14 @@ const allowToEntry = (casino: Casino, listOfUsers: User[]) => {
     }
 
         if(casino.location === "BRAZIL"){
-            return [
-                {allowedInBrazil},
-                {unallowedInBrazil}
-            ]
+            result.push({allowedInBrazil})
+            result.push({unallowedInBrazil})
+        } else {
+            result.push({allowedInEua})
+            result.push({unallowedInEua})
         }
 
-        if(casino.location === "EUA"){
-            return [
-                {allowedInEua},
-                {unallowedInEua}
-            ]
-        }
+        return result
 }
 
 export default allowToEntry

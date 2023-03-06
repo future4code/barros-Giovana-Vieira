@@ -42,6 +42,8 @@ const users: User[] = [
 describe.skip("tests", () => {
     test("Test 1", () => {
 
+        console.log(allowToEntry(casinoEua, users))
+
     expect(allowToEntry(casinoEua, users)).toEqual([
         { 
             allowedInEua:

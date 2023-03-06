@@ -39,45 +39,45 @@ const users: User[] = [
     }
 ]
 
-describe("tests", () => {
+describe.skip("tests", () => {
     test("Test 1", () => {
+    const userTest = {
+        name: "Giovana",
+        nationality: UserNationality.BRAZILIAN,
+        age: 23
+    }
 
-    expect(allowToEntry(casinoEua, users)).toEqual([
+    const result = allowToEntry(casinoBrazil, [userTest])
+
+    expect(result[0].allowedInBrazil.length).toBeLessThan(2)
+    expect(result[0].allowedInBrazil.length).toBeGreaterThan(0)
+    expect(result)
+    .toEqual([
         { 
-            allowedInEua:
+            allowedInBrazil:
             [
                 {
                     name: "Giovana",
                     nationality: 'BRAZILIAN',
                     age: 23
-                },
-                {
-                    name: 'Guilherme', 
-                    nationality: 'AMERICAN', 
-                    age: 32 
                 }
             ] 
         },
         { 
-            unallowedInEua: 
-            [
-                {
-                    name: "Rafael",
-                    nationality: 'BRAZILIAN',
-                    age: 17
-                },
-                { 
-                    name: 'Caio', 
-                    nationality: 'AMERICAN', 
-                    age: 15 
-                },
-                { 
-                    name: 'Fábio', 
-                    nationality: 'AMERICAN', 
-                    age: 12 
-                }             
-            ] 
+            unallowedInBrazil: [] 
         }
     ])  
+    })
+
+    test("Test 2", () => {
+        const userTest = {
+            name: "John",
+            nationality: UserNationality.AMERICAN,
+            age: 20
+        }
+    
+        const result = allowToEntry(casinoEua, [userTest])
+
+        expect(result[1].unallowedInEua.length).toBe(1)
     })
 })
